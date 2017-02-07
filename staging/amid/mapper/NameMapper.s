@@ -71,44 +71,44 @@ function init( keyToValueMap )
 
 //
 
-function keyFor( name )
+function keyFor( value )
 {
   var self = this;
 
   _.assert( arguments.length === 1 );
-  _.assert( self.valueToKeyMap[ name ] !== undefined,'unknown target name',name );
 
-  if( _.objectIs( name ) || _.arrayIs( name ) )
+  if( _.objectIs( value ) || _.arrayIs( value ) )
   {
     debugger;
     _.entityMap( nmae,function keyFor( e )
     {
+      _.assert( self.valueToKeyMap[ value ] !== undefined,'unknown value',value );
       return self.valueToKeyMap[ e ];
     });
   }
 
-  return self.valueToKeyMap[ name ];
+  return self.valueToKeyMap[ value ];
 }
 
 //
 
-function valueFor( name )
+function valueFor( key )
 {
   var self = this;
 
   _.assert( arguments.length === 1 );
-  _.assert( self.keyToValueMap[ name ] !== undefined,'unknown original name',name );
 
-  if( _.objectIs( name ) || _.arrayIs( name ) )
+  if( _.objectIs( key ) || _.arrayIs( key ) )
   {
     debugger;
     _.entityMap( nmae,function keyFor( e )
     {
+      _.assert( self.keyToValueMap[ key ] !== undefined,'unknown key',key );
       return self.keyToValueMap[ e ];
     });
   }
 
-  return self.keyToValueMap[ name ];
+  return self.keyToValueMap[ key ];
 }
 
 // --
@@ -161,7 +161,7 @@ _.protoMake
 
 wCopyable.mixin( Self );
 
-// accessor 
+// accessor
 
 // _.accessor( Self.prototype,
 // {
