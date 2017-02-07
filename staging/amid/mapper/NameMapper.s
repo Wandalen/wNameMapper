@@ -77,7 +77,7 @@ function keyFor( value )
 
   _.assert( arguments.length === 1 );
 
-  if( !_.atomicIs( key ) )
+  if( !_.atomicIs( value ) )
   {
     debugger;
     return _.entityMap( value,function keyFor( value )
