@@ -80,7 +80,7 @@ function keyFor( value )
   if( _.objectIs( value ) || _.arrayIs( value ) )
   {
     debugger;
-    _.entityMap( nmae,function keyFor( e )
+    _.entityMap( value,function keyFor( e )
     {
       _.assert( self.valueToKeyMap[ value ] !== undefined,'unknown value',value );
       return self.valueToKeyMap[ e ];
