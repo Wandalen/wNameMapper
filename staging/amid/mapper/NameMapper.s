@@ -102,14 +102,14 @@ function valueFor( key )
   if( _.objectIs( key ) || _.arrayIs( key ) )
   {
     debugger;
-    _.entityMap( nmae,function keyFor( key )
+    _.entityMap( key,function keyFor( key )
     {
       _.assert( self.keyToValueMap[ key ] !== undefined,'unknown key',key );
       return self.keyToValueMap[ key ];
     });
   }
 
-  _.assert( self.keyToValueMap[ key ] !== undefined,'unknown key',key ); 
+  _.assert( self.keyToValueMap[ key ] !== undefined,'unknown key',key );
   return self.keyToValueMap[ key ];
 }
 
