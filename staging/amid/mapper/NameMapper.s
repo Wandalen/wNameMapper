@@ -161,7 +161,7 @@ _.protoMake
 
 wCopyable.mixin( Self );
 
-// accessor
+// accessor 
 
 // _.accessor( Self.prototype,
 // {

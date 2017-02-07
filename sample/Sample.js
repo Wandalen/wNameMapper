@@ -4,7 +4,7 @@ require( 'wNameMapper' );
 
 var _ = wTools;
 
-var PrimitiveMapper = new wNameMapper
+var nameMapper = new wNameMapper
 ({
   Points : 5001,
   LineStrip : 5002,
@@ -15,14 +15,14 @@ var PrimitiveMapper = new wNameMapper
   Triangles : 5007,
 });
 
-var keyForPoints = PrimitiveMapper.keyFor( 'Points' )
+var keyForPoints = nameMapper.keyFor( 'Points' )
 console.log( 'keyForPoints :',keyForPoints );
-// 5001
+// keyForPoints : 5001
 
-var value = PrimitiveMapper.valueFor( keyForPoints )
+var value = nameMapper.valueFor( keyForPoints )
 console.log( 'value :',value );
-//
+// value : Points
 
-var keys = PrimitiveMapper.keyFor([ 'Points','Lines' ])
+var keys = nameMapper.keyFor([ 'Points','Lines' ])
 console.log( 'keys :',keys );
-// 5001, 5004
+// keys : 5001, 5004

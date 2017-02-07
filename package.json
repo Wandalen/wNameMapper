@@ -24,18 +24,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Wandalen/wDownloaderOfCourses.git"
+    "url": "https://github.com/Wandalen/wNameMapper.git"
   },
   "bugs": {
-    "url": "https://github.com/Wandalen/wDownloaderOfCourses/issues"
+    "url": "https://github.com/Wandalen/wNameMapper/issues"
   },
   "dependencies": {
-    "wConsequence": "",
-    "wFiles": "",
     "wTools": "",
-    "wLogger": "",
-    "randomstring": "",
-    "request": ""
+    "wCopyable": ""
   },
   "devDependencies": {
     "wTesting": ""
