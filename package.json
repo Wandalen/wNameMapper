@@ -1,0 +1,49 @@
+{
+  "name": "wNameMapper",
+  "version": "0.4.0",
+  "license": "MIT",
+  "description": "Module in JavaScript for mapping names from one space into another and vice versa.",
+  "author": "Kostiantyn Wandalen <wtory.net@domainsbyproxy.com>",
+  "contributors": [
+    {
+      "name": "Kostiantyn Wandalen",
+      "email": "wtory.net@domainsbyproxy.com>"
+    }
+  ],
+  "main": "staging/amid/mapper/NameMapper.s",
+  "files": [
+    "staging/amid/color",
+    "production"
+  ],
+  "directories": {
+    "doc": "doc",
+    "main": "staging/amid/mapper/NameMapper.s"
+  },
+  "scripts": {
+    "make_doc": "./doc.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wandalen/wDownloaderOfCourses.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Wandalen/wDownloaderOfCourses/issues"
+  },
+  "dependencies": {
+    "wConsequence": "",
+    "wFiles": "",
+    "wTools": "",
+    "wLogger": "",
+    "randomstring": "",
+    "request": ""
+  },
+  "devDependencies": {
+    "wTesting": ""
+  },
+  "keywords": [
+    "wTools",
+    "Map names",
+    "Key by value",
+    "Translate"
+  ]
+}

@@ -1,0 +1,185 @@
+( function _NameMapper_s_( ) {
+
+'use strict';
+
+if( typeof wBase === 'undefined' )
+try
+{
+  require( '../../abase/wTools.s' );
+}
+catch( err )
+{
+  require( 'wTools' );
+}
+
+var _ = wTools;
+
+_.include( 'wCopyable' );
+
+//
+
+var Parent = null;
+var Self = function wNameMapper( o )
+{
+  if( !( this instanceof Self ) )
+  if( o instanceof Self )
+  return o;
+  else
+  return new( _.routineJoin( Self, Self, arguments ) );
+  return Self.prototype.init.apply( this,arguments );
+}
+
+Self.nameShort = 'NameMapper';
+
+// --
+// inter
+// --
+
+function init( keyToValueMap )
+{
+  var self = this;
+
+  // if( o )
+  // self.copy( o );
+
+  if( arguments.length > 1 )
+  _.mapExtendThis.apply( {},arguments );
+
+  _.assert( _.objectIs( keyToValueMap ),'wNameMapper expects object as argument' );
+
+  // _.assert( _.objectIs( self.keyToValueMap ) || _.objectIs( self.valueToKeyMap ),'Mapper : expects keyToValueMap or valueToKeyMap' );
+
+  self.keyToValueMap = keyToValueMap;
+  self.valueToKeyMap = _.mapInvertKeyValue( self.keyToValueMap );
+
+  // if( !self.keyToValueMap )
+  // self.keyToValueMap = _.mapInvertKeyValue( self.valueToKeyMap );
+  //
+  // if( !self.valueToKeyMap )
+  // self.valueToKeyMap = _.mapInvertKeyValue( self.keyToValueMap );
+
+  /* seal it */
+
+  if( self.constructor === Self )
+  {
+    Object.freeze( self );
+    Object.freeze( self.keyToValueMap );
+    Object.freeze( self.valueToKeyMap );
+  }
+
+}
+
+//
+
+function keyFor( name )
+{
+  var self = this;
+
+  _.assert( arguments.length === 1 );
+  _.assert( self.valueToKeyMap[ name ] !== undefined,'unknown target name',name );
+
+  if( _.objectIs( name ) || _.arrayIs( name ) )
+  {
+    debugger;
+    _.entityMap( nmae,function keyFor( e )
+    {
+      return self.valueToKeyMap[ e ];
+    });
+  }
+
+  return self.valueToKeyMap[ name ];
+}
+
+//
+
+function valueFor( name )
+{
+  var self = this;
+
+  _.assert( arguments.length === 1 );
+  _.assert( self.keyToValueMap[ name ] !== undefined,'unknown original name',name );
+
+  if( _.objectIs( name ) || _.arrayIs( name ) )
+  {
+    debugger;
+    _.entityMap( nmae,function keyFor( e )
+    {
+      return self.keyToValueMap[ e ];
+    });
+  }
+
+  return self.keyToValueMap[ name ];
+}
+
+// --
+// relationships
+// --
+
+var Composes =
+{
+  keyToValueMap : null,
+  valueToKeyMap : null,
+}
+
+var Associates =
+{
+}
+
+var Restricts =
+{
+}
+
+// --
+// proto
+// --
+
+var Proto =
+{
+
+  init : init,
+
+  keyFor : keyFor,
+  valueFor : valueFor,
+
+  // relationships
+
+  constructor : Self,
+  Composes : Composes,
+  Associates : Associates,
+  Restricts : Restricts,
+
+};
+
+// define
+
+_.protoMake
+({
+  constructor : Self,
+  parent : Parent,
+  extend : Proto,
+});
+
+wCopyable.mixin( Self );
+
+// accessor
+
+// _.accessor( Self.prototype,
+// {
+//
+//   // defaultFieldsArray : 'defaultFieldsArray',
+//
+// });
+//
+// // readonly
+//
+// _.accessorReadOnly( Self.prototype,
+// {
+//
+//   // names : 'names',
+//   // defaultFieldsMap : 'defaultFieldsMap',
+//
+// });
+
+wTools[ Self.nameShort ] = _global_[ Self.name ] = Self;
+
+})();
