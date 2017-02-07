@@ -80,10 +80,10 @@ function keyFor( value )
   if( _.objectIs( value ) || _.arrayIs( value ) )
   {
     debugger;
-    _.entityMap( value,function keyFor( e )
+    _.entityMap( value,function keyFor( value )
     {
       _.assert( self.valueToKeyMap[ value ] !== undefined,'unknown value',value );
-      return self.valueToKeyMap[ e ];
+      return self.valueToKeyMap[ value ];
     });
   }
 
@@ -101,10 +101,10 @@ function valueFor( key )
   if( _.objectIs( key ) || _.arrayIs( key ) )
   {
     debugger;
-    _.entityMap( nmae,function keyFor( e )
+    _.entityMap( nmae,function keyFor( key )
     {
       _.assert( self.keyToValueMap[ key ] !== undefined,'unknown key',key );
-      return self.keyToValueMap[ e ];
+      return self.keyToValueMap[ key ];
     });
   }
 
