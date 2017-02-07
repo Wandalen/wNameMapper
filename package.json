@@ -12,7 +12,7 @@
   ],
   "main": "staging/amid/mapper/NameMapper.s",
   "files": [
-    "staging/amid/color",
+    "staging/amid",
     "production"
   ],
   "directories": {
