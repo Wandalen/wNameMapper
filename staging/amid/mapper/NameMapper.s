@@ -77,10 +77,10 @@ function keyFor( value )
 
   _.assert( arguments.length === 1 );
 
-  if( _.objectIs( value ) || _.arrayIs( value ) )
+  if( !_.atomicIs( key ) )
   {
     debugger;
-    _.entityMap( value,function keyFor( value )
+    return _.entityMap( value,function keyFor( value )
     {
       _.assert( self.valueToKeyMap[ value ] !== undefined,'unknown value',value );
       return self.valueToKeyMap[ value ];
@@ -99,10 +99,10 @@ function valueFor( key )
 
   _.assert( arguments.length === 1 );
 
-  if( _.objectIs( key ) || _.arrayIs( key ) )
+  if( !_.atomicIs( key ) )
   {
     debugger;
-    _.entityMap( key,function keyFor( key )
+    return _.entityMap( key,function valueFor( key )
     {
       _.assert( self.keyToValueMap[ key ] !== undefined,'unknown key',key );
       return self.keyToValueMap[ key ];
