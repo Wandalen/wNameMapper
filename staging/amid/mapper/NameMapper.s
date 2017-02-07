@@ -87,6 +87,7 @@ function keyFor( value )
     });
   }
 
+  _.assert( self.valueToKeyMap[ value ] !== undefined,'unknown value',value );
   return self.valueToKeyMap[ value ];
 }
 
@@ -108,6 +109,7 @@ function valueFor( key )
     });
   }
 
+  _.assert( self.keyToValueMap[ key ] !== undefined,'unknown key',key ); 
   return self.keyToValueMap[ key ];
 }
 
