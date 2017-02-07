@@ -15,6 +15,9 @@ var nameMapper = new wNameMapper
   Triangles : 5007,
 });
 
+console.log( 'nameMapper.valueToKeyMap',nameMapper.valueToKeyMap );
+console.log( 'nameMapper.keyToValueMap',nameMapper.keyToValueMap );
+
 var keyForPoints = nameMapper.keyFor( 'Points' )
 console.log( 'keyForPoints :',keyForPoints );
 // keyForPoints : 5001
