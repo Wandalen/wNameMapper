@@ -3,7 +3,7 @@ Module in JavaScript for mapping names from one space into another and vice vers
 
 ### Usage:
 
-###### Sample #1
+###### Simple Sample
 ```javascript
 
 if( typeof module !== 'undefined' )
@@ -11,7 +11,7 @@ require( 'wNameMapper' );
 
 var _ = wTools;
 
-var nameMapper = new wNameMapper
+var nameMapper = new wNameMapper().set
 ({
   Points : 5001,
   LineStrip : 5002,
@@ -39,3 +39,42 @@ console.log( 'values :',values );
 
 ```
 
+###### Sample of value space with duplicates
+```javascript
+
+var nameMapper = new wNameMapper({ droppingDuplicate : 1 }).set
+({
+
+  'exam' : 'discussion',
+  'quiz' : 'problem',
+  'supplement' : 'hypertext',
+  'video' : 'video',
+
+  'pdf' : 'downloadable',
+  'subtitles' : 'downloadable',
+  'asset' : 'downloadable',
+
+  'lecture' : 'page',
+  'section' : 'section',
+  'week' : 'chapter',
+  'course' : 'course',
+
+});
+
+var valueForExam = nameMapper.valueFor( 'exam' )
+console.log( 'valueForExam :',valueForExam );
+// valueForExam : discussion
+
+var valueForPdf = nameMapper.valueFor( 'pdf' )
+console.log( 'valueForPdf :',valueForPdf );
+// valueForPdf : downloadable
+
+try
+{
+  var values = nameMapper.keyFor( 'downloadable' )
+}
+catch( err )
+{
+  console.log( 'Unknown value downloadable, because this value has duplicates' )
+}
+```

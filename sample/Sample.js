@@ -1,10 +1,12 @@
 
-if( typeof module !== 'undefined' )
-require( 'wNameMapper' );
+require( '../staging/amid/mapper/NameMapper.s' );
+
+// if( typeof module !== 'undefined' )
+// require( 'wNameMapper' );
 
 var _ = wTools;
 
-var nameMapper = new wNameMapper
+var nameMapper = new wNameMapper().set
 ({
   Points : 5001,
   LineStrip : 5002,

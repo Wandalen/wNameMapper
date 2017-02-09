@@ -35,38 +35,44 @@ Self.nameShort = 'NameMapper';
 // inter
 // --
 
-function init( keyToValueMap )
+function init( o )
 {
   var self = this;
 
-  // if( o )
-  // self.copy( o );
+  _.assert( arguments.length === 0 || arguments.length === 1 );
 
-  if( arguments.length > 1 )
-  _.mapExtendThis.apply( {},arguments );
+  _.instanceInit( self );
 
-  _.assert( _.objectIs( keyToValueMap ),'wNameMapper expects object as argument' );
-
-  // _.assert( _.objectIs( self.keyToValueMap ) || _.objectIs( self.valueToKeyMap ),'Mapper : expects keyToValueMap or valueToKeyMap' );
-
-  self.keyToValueMap = keyToValueMap;
-  self.valueToKeyMap = _.mapInvertKeyValue( self.keyToValueMap );
-
-  // if( !self.keyToValueMap )
-  // self.keyToValueMap = _.mapInvertKeyValue( self.valueToKeyMap );
-  //
-  // if( !self.valueToKeyMap )
-  // self.valueToKeyMap = _.mapInvertKeyValue( self.keyToValueMap );
+  if( o )
+  self.copy( o );
 
   /* seal it */
 
   if( self.constructor === Self )
-  {
-    Object.freeze( self );
-    Object.freeze( self.keyToValueMap );
-    Object.freeze( self.valueToKeyMap );
-  }
+  Object.preventExtensions( self );
 
+}
+
+//
+
+function set()
+{
+  var self = this;
+
+  _.assert( arguments.length > 0 );
+
+  self.keyToValueMap = _.mapExtend( {},self.keyToValueMap );
+  _.mapExtendToThis.apply( self.keyToValueMap,arguments );
+
+  if( self.droppingDuplicate )
+  self.valueToKeyMap = _.mapInvertDroppingDuplicates( self.keyToValueMap );
+  else
+  self.valueToKeyMap = _.mapInvert( self.keyToValueMap );
+
+  Object.freeze( self.keyToValueMap );
+  Object.freeze( self.valueToKeyMap );
+
+  return self;
 }
 
 //
@@ -82,12 +88,12 @@ function keyFor( value )
     debugger;
     return _.entityMap( value,function keyFor( value )
     {
-      _.assert( self.valueToKeyMap[ value ] !== undefined,'unknown value',value );
+      _.assert( self.valueToKeyMap[ value ] !== undefined,'Unknown value',value );
       return self.valueToKeyMap[ value ];
     });
   }
 
-  _.assert( self.valueToKeyMap[ value ] !== undefined,'unknown value',value );
+  _.assert( self.valueToKeyMap[ value ] !== undefined,'Unknown value',value );
   return self.valueToKeyMap[ value ];
 }
 
@@ -104,12 +110,12 @@ function valueFor( key )
     debugger;
     return _.entityMap( key,function valueFor( key )
     {
-      _.assert( self.keyToValueMap[ key ] !== undefined,'unknown key',key );
+      _.assert( self.keyToValueMap[ key ] !== undefined,'Unknown key',key );
       return self.keyToValueMap[ key ];
     });
   }
 
-  _.assert( self.keyToValueMap[ key ] !== undefined,'unknown key',key );
+  _.assert( self.keyToValueMap[ key ] !== undefined,'Unknown key',key );
   return self.keyToValueMap[ key ];
 }
 
@@ -119,8 +125,9 @@ function valueFor( key )
 
 var Composes =
 {
-  keyToValueMap : null,
-  valueToKeyMap : null,
+  droppingDuplicate : 1,
+  keyToValueMap : {},
+  valueToKeyMap : {},
 }
 
 var Associates =
@@ -139,6 +146,7 @@ var Proto =
 {
 
   init : init,
+  set : set,
 
   keyFor : keyFor,
   valueFor : valueFor,
@@ -163,25 +171,8 @@ _.protoMake
 
 wCopyable.mixin( Self );
 
-// accessor
-
-// _.accessor( Self.prototype,
-// {
-//
-//   // defaultFieldsArray : 'defaultFieldsArray',
-//
-// });
-//
-// // readonly
-//
-// _.accessorReadOnly( Self.prototype,
-// {
-//
-//   // names : 'names',
-//   // defaultFieldsMap : 'defaultFieldsMap',
-//
-// });
-
 wTools[ Self.nameShort ] = _global_[ Self.name ] = Self;
+
+//
 
 })();
