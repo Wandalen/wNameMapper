@@ -61,7 +61,7 @@ function set()
 
   _.assert( arguments.length > 0 );
 
-  self.keyToValueMap = _.mapExtend( {},self.keyToValueMap );
+  self.keyToValueMap = _.mapExtend( null,self.keyToValueMap );
   _.mapExtendToThis.apply( self.keyToValueMap,arguments );
 
   if( self.droppingDuplicate )
@@ -77,46 +77,68 @@ function set()
 
 //
 
-function keyFor( value )
+function keyFor( val )
 {
   var self = this;
 
   _.assert( arguments.length === 1 );
 
-  if( !_.atomicIs( value ) )
+  if( !_.atomicIs( val ) )
   {
     debugger;
-    return _.entityMap( value,function keyFor( value )
+    return _.entityMap( val,function keyFor( val )
     {
-      _.assert( self.valueToKeyMap[ value ] !== undefined,'Unknown value',value );
-      return self.valueToKeyMap[ value ];
+      return self.keyFor( val );
     });
   }
 
-  _.assert( self.valueToKeyMap[ value ] !== undefined,'Unknown value',value );
-  return self.valueToKeyMap[ value ];
+  if( self.asIsIfMiss && self.valueToKeyMap[ val ] === undefined )
+  return val;
+
+  _.assert( self.valueToKeyMap[ val ] !== undefined,'Unknown value',val );
+  return self.valueToKeyMap[ val ];
 }
 
 //
 
-function valueFor( key )
+function valFor( key )
 {
   var self = this;
 
+  _.assert( _.strIs( key ) || _.numberIs( key ) );
   _.assert( arguments.length === 1 );
 
   if( !_.atomicIs( key ) )
   {
     debugger;
-    return _.entityMap( key,function valueFor( key )
+    return _.entityMap( key,function valFor( key )
     {
-      _.assert( self.keyToValueMap[ key ] !== undefined,'Unknown key',key );
-      return self.keyToValueMap[ key ];
+      return self.valFor( key );
     });
   }
 
+  if( self.asIsIfMiss && self.keyToValueMap[ key ] === undefined )
+  return key;
+
   _.assert( self.keyToValueMap[ key ] !== undefined,'Unknown key',key );
+
   return self.keyToValueMap[ key ];
+}
+
+//
+
+function hasKey( key )
+{
+  var self = this;
+  return self.keyToValueMap[ key ] !== undefined;
+}
+
+//
+
+function hasVal( val )
+{
+  var self = this;
+  return _.mapVals( self.keyToValueMap ).indexOf( val ) !== -1;
 }
 
 // --
@@ -126,8 +148,9 @@ function valueFor( key )
 var Composes =
 {
   droppingDuplicate : 1,
-  keyToValueMap : {},
-  valueToKeyMap : {},
+  asIsIfMiss : 0,
+  keyToValueMap : Object.create( null ),
+  valueToKeyMap : Object.create( null ),
 }
 
 var Associates =
@@ -149,7 +172,10 @@ var Proto =
   set : set,
 
   keyFor : keyFor,
-  valueFor : valueFor,
+  valFor : valFor,
+
+  hasKey : hasKey,
+  hasVal : hasVal,
 
   // relationships
 
@@ -169,10 +195,13 @@ _.protoMake
   extend : Proto,
 });
 
+//
+
 wCopyable.mixin( Self );
 
 wTools[ Self.nameShort ] = _global_[ Self.name ] = Self;
 
-//
+if( typeof module !== 'undefined' )
+module[ 'exports' ] = Self;
 
 })();
