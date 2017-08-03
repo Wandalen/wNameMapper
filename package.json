@@ -1,7 +1,7 @@
 {
   "name": "wnamemapper",
   "version": "0.4.20",
-  "engine": "node >= 5.0.0",
+  "engine": "node >= 6.0.0",
   "license": "MIT",
   "description": "Module in JavaScript for mapping names from one space into another and vice versa.",
   "author": "Kostiantyn Wandalen <wtory.net@domainsbyproxy.com>",
