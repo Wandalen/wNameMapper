@@ -105,7 +105,6 @@ function valFor( key )
 {
   var self = this;
 
-  _.assert( _.strIs( key ) || _.numberIs( key ) );
   _.assert( arguments.length === 1 );
 
   if( !_.atomicIs( key ) )
@@ -116,6 +115,8 @@ function valFor( key )
       return self.valFor( key );
     });
   }
+
+  _.assert( _.strIs( key ) || _.numberIs( key ),'expects  string or number "key", but got',_.strTypeOf( key ) );
 
   if( self.asIsIfMiss && self.keyToValueMap[ key ] === undefined )
   return key;
@@ -130,6 +131,7 @@ function valFor( key )
 function hasKey( key )
 {
   var self = this;
+  _.assert( _.strIs( key ) || _.numberIs( key ),'expects  string or number "key", but got',_.strTypeOf( key ) );
   return self.keyToValueMap[ key ] !== undefined;
 }
 
@@ -200,7 +202,6 @@ _.classMake
 wCopyable.mixin( Self );
 
 wTools[ Self.nameShort ] = _global_[ Self.name ] = Self;
-
 if( typeof module !== 'undefined' )
 module[ 'exports' ] = Self;
 

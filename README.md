@@ -27,7 +27,7 @@ var nameMapper = new wNameMapper().set
 // console.log( 'nameMapper.valueToKeyMap',nameMapper.valueToKeyMap );
 // console.log( 'nameMapper.keyToValueMap',nameMapper.keyToValueMap );
 
-var valueForPoints = nameMapper.valueFor( 'Points' )
+var valueForPoints = nameMapper.valFor( 'Points' )
 console.log( 'valueForPoints :',valueForPoints );
 // valueForPoints : 5001
 
@@ -35,7 +35,7 @@ var key = nameMapper.keyFor( valueForPoints )
 console.log( 'key :',key );
 // key : Points
 
-var values = nameMapper.valueFor([ 'Points','Lines' ])
+var values = nameMapper.valFor([ 'Points','Lines' ])
 console.log( 'values :',values );
 // values : 5001, 5004
 
@@ -63,11 +63,11 @@ var nameMapper = new wNameMapper({ droppingDuplicate : 1 }).set
 
 });
 
-var valueForExam = nameMapper.valueFor( 'exam' )
+var valueForExam = nameMapper.valFor( 'exam' )
 console.log( 'valueForExam :',valueForExam );
 // valueForExam : discussion
 
-var valueForPdf = nameMapper.valueFor( 'pdf' )
+var valueForPdf = nameMapper.valFor( 'pdf' )
 console.log( 'valueForPdf :',valueForPdf );
 // valueForPdf : downloadable
 

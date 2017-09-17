@@ -18,7 +18,7 @@ var nameMapper = new wNameMapper().set
 // console.log( 'nameMapper.valueToKeyMap',nameMapper.valueToKeyMap );
 // console.log( 'nameMapper.keyToValueMap',nameMapper.keyToValueMap );
 
-var valueForPoints = nameMapper.valueFor( 'Points' )
+var valueForPoints = nameMapper.valFor( 'Points' )
 console.log( 'valueForPoints :',valueForPoints );
 // valueForPoints : 5001
 
@@ -26,6 +26,6 @@ var key = nameMapper.keyFor( valueForPoints )
 console.log( 'key :',key );
 // key : Points
 
-var values = nameMapper.valueFor([ 'Points','Lines' ])
+var values = nameMapper.valFor([ 'Points','Lines' ])
 console.log( 'values :',values );
 // values : 5001, 5004
