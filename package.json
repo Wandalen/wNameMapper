@@ -3,7 +3,7 @@
   "version": "0.4.21",
   "engine": "node >= 6.0.0",
   "license": "MIT",
-  "description": "Module in JavaScript for mapping names from one space into another and vice versa.",
+  "description": "The module in JavaScript for mapping names from one space into another and vice versa.",
   "author": "Kostiantyn Wandalen <wtory.net@domainsbyproxy.com>",
   "contributors": [
     {
@@ -11,14 +11,14 @@
       "email": "wtory.net@domainsbyproxy.com>"
     }
   ],
-  "main": "staging/amid/mapper/NameMapper.s",
+  "main": "staging/dwtools/amid/mapper/NameMapper.s",
   "files": [
-    "staging/amid",
+    "staging/dwtools/amid",
     "production"
   ],
   "directories": {
     "doc": "doc",
-    "main": "staging/amid/mapper/NameMapper.s"
+    "main": "staging/dwtools/amid/mapper/NameMapper.s"
   },
   "scripts": {
     "test": "wtest staging",
@@ -36,7 +36,8 @@
     "wCopyable": ""
   },
   "devDependencies": {
-    "wTesting": ""
+    "wTesting": "",
+    "wnamemapper": "."
   },
   "keywords": [
     "wTools",

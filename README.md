@@ -1,5 +1,7 @@
-# wNameMapper
-Module in JavaScript for mapping names from one space into another and vice versa.
+
+# wNameMapper [![Build Status](https://travis-ci.org/Wandalen/wNameMapper.svg?branch=master)](https://travis-ci.org/Wandalen/wNameMapper)
+
+The module in JavaScript for mapping names from one space into another and vice versa.
 
 ### Usage:
 
@@ -78,6 +80,3 @@ catch( err )
   console.log( 'Unknown value downloadable, because this value has duplicates' )
 }
 ```
-
-
-

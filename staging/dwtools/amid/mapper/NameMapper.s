@@ -5,7 +5,7 @@
 if( typeof wBase === 'undefined' )
 try
 {
-  require( '../../abase/wTools.s' );
+  require( '../../Base.s' );
 }
 catch( err )
 {
@@ -188,7 +188,7 @@ var Proto =
 
 // define
 
-_.prototypeMake
+_.classMake
 ({
   cls : Self,
   parent : Parent,

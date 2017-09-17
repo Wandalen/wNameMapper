@@ -1,8 +1,6 @@
 
-require( '../staging/amid/mapper/NameMapper.s' );
-
-// if( typeof module !== 'undefined' )
-// require( 'wNameMapper' );
+if( typeof module !== 'undefined' )
+require( 'wnamemapper' );
 
 var _ = wTools;
 
