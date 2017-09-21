@@ -13,7 +13,7 @@
   ],
   "main": "staging/dwtools/amid/mapper/NameMapper.s",
   "files": [
-    "staging/dwtools/amid",
+    "staging/dwtools/amid/mapper/",
     "production"
   ],
   "directories": {
