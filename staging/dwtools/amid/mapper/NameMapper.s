@@ -2,22 +2,35 @@
 
 'use strict';
 
-if( typeof wBase === 'undefined' )
-try
+if( typeof module !== 'undefined' )
 {
-  require( '../../Base.s' );
-}
-catch( err )
-{
-  require( 'wTools' );
-}
 
-var _ = wTools;
+  if( typeof _global_ === 'undefined' || !_global_.wBase )
+  {
+    let toolsPath = '../../../dwtools/Base.s';
+    let toolsExternal = 0;
+    try
+    {
+      require.resolve( toolsPath )/*hhh*/;
+    }
+    catch( err )
+    {
+      toolsExternal = 1;
+      require( 'wTools' );
+    }
+    if( !toolsExternal )
+    require( toolsPath )/*hhh*/;
+  }
 
-_.include( 'wCopyable' );
+  var _ = _global_.wTools;
+
+  _.include( 'wCopyable' );
+
+}
 
 //
 
+var _ = _global_.wTools;
 var Parent = null;
 var Self = function wNameMapper( o )
 {
@@ -197,11 +210,11 @@ _.classMake
   extend : Proto,
 });
 
+_.Copyable.mixin( Self );
+
 //
 
-wCopyable.mixin( Self );
-
-wTools[ Self.nameShort ] = _global_[ Self.name ] = Self;
+_[ Self.nameShort ] = _global_[ Self.name ] = Self;
 if( typeof module !== 'undefined' )
 module[ 'exports' ] = Self;
 
