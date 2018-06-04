@@ -96,7 +96,7 @@ function keyFor( val )
 
   _.assert( arguments.length === 1 );
 
-  if( !_.atomicIs( val ) )
+  if( !_.primitiveIs( val ) )
   {
     debugger;
     return _.entityMap( val,function keyFor( val )
@@ -120,7 +120,7 @@ function valFor( key )
 
   _.assert( arguments.length === 1 );
 
-  if( !_.atomicIs( key ) )
+  if( !_.primitiveIs( key ) )
   {
     debugger;
     return _.entityMap( key,function valFor( key )
