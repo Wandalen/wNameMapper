@@ -76,7 +76,7 @@ function set()
   _.assert( arguments.length > 0 );
 
   self.keyToValueMap = _.mapExtend( null,self.keyToValueMap );
-  _.mapExtendToThis.apply( self.keyToValueMap,arguments );
+  _.mapExtendByMaps( self.keyToValueMap,arguments );
 
   if( self.droppingDuplicate )
   self.valueToKeyMap = _.mapInvertDroppingDuplicates( self.keyToValueMap );
