@@ -95,7 +95,7 @@ function keyFor( val )
 {
   var self = this;
 
-  _.assert( arguments.length === 1 );
+  _.assert( arguments.length === 1, 'expects single argument' );
 
   if( !_.primitiveIs( val ) )
   {
@@ -119,7 +119,7 @@ function valFor( key )
 {
   var self = this;
 
-  _.assert( arguments.length === 1 );
+  _.assert( arguments.length === 1, 'expects single argument' );
 
   if( !_.primitiveIs( key ) )
   {
