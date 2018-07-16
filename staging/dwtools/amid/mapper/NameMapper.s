@@ -60,6 +60,11 @@ function init( o )
   if( o )
   self.copy( o );
 
+  self.forVal = self._forVal.bind( self );
+  self.forKey = self._forKey.bind( self );
+  self.hasKey = self._hasKey.bind( self );
+  self.hasVal = self._hasVal.bind( self );
+
   /* seal it */
 
   if( self.constructor === Self )
@@ -91,7 +96,7 @@ function set()
 
 //
 
-function keyFor( val )
+function forVal( val )
 {
   var self = this;
 
@@ -100,9 +105,9 @@ function keyFor( val )
   if( !_.primitiveIs( val ) )
   {
     debugger;
-    return _.entityMap( val,function keyFor( val )
+    return _.entityMap( val,function forVal( val )
     {
-      return self.keyFor( val );
+      return self.forVal( val );
     });
   }
 
@@ -115,7 +120,7 @@ function keyFor( val )
 
 //
 
-function valFor( key )
+function forKey( key )
 {
   var self = this;
 
@@ -124,13 +129,13 @@ function valFor( key )
   if( !_.primitiveIs( key ) )
   {
     debugger;
-    return _.entityMap( key,function valFor( key )
+    return _.entityMap( key,function forKey( key )
     {
-      return self.valFor( key );
+      return self.forKey( key );
     });
   }
 
-  _.assert( _.strIs( key ) || _.numberIs( key ),'expects  string or number "key", but got',_.strTypeOf( key ) );
+  _.assert( _.strIs( key ) || _.numberIs( key ),'expects string or number {-key-}, but got',_.strTypeOf( key ) );
 
   if( self.asIsIfMiss && self.keyToValueMap[ key ] === undefined )
   return key;
@@ -145,7 +150,7 @@ function valFor( key )
 function hasKey( key )
 {
   var self = this;
-  _.assert( _.strIs( key ) || _.numberIs( key ),'expects  string or number "key", but got',_.strTypeOf( key ) );
+  _.assert( _.strIs( key ) || _.numberIs( key ),'expects string or number {-key-}, but got',_.strTypeOf( key ) );
   return self.keyToValueMap[ key ] !== undefined;
 }
 
@@ -154,7 +159,7 @@ function hasKey( key )
 function hasVal( val )
 {
   var self = this;
-  return _.mapVals( self.keyToValueMap ).indexOf( val ) !== -1;
+  return self.valueToKeyMap[ val ] !== undefined;
 }
 
 // --
@@ -187,11 +192,10 @@ var Proto =
   init : init,
   set : set,
 
-  keyFor : keyFor,
-  valFor : valFor,
-
-  hasKey : hasKey,
-  hasVal : hasVal,
+  _forVal : forVal,
+  _forKey : forKey,
+  _hasKey : hasKey,
+  _hasVal : hasVal,
 
   // relationships
 
