@@ -1,6 +1,6 @@
 {
   "name": "wnamemapper",
-  "version": "0.4.34",
+  "version": "0.4.35",
   "engine": "node >= 6.0.0",
   "license": "MIT",
   "description": "The module in JavaScript for mapping names from one space into another and vice versa.",
