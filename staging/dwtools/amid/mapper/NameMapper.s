@@ -43,7 +43,7 @@ var Self = function wNameMapper( o )
   return Self.prototype.init.apply( this,arguments );
 }
 
-Self.nameShort = 'NameMapper';
+Self.shortName = 'NameMapper';
 
 // --
 // inter
@@ -81,7 +81,7 @@ function set()
   _.assert( arguments.length > 0 );
 
   self.keyToValueMap = _.mapExtend( null,self.keyToValueMap );
-  _.mapExtendByMaps( self.keyToValueMap,arguments );
+  _.mapsExtend( self.keyToValueMap,arguments );
 
   if( self.droppingDuplicate )
   self.valueToKeyMap = _.mapInvertDroppingDuplicates( self.keyToValueMap );
@@ -163,7 +163,7 @@ function hasVal( val )
 }
 
 // --
-// relationships
+// relations
 // --
 
 var Composes =
@@ -197,7 +197,7 @@ var Proto =
   _hasKey : hasKey,
   _hasVal : hasVal,
 
-  // relationships
+  // relations
 
   constructor : Self,
   Composes : Composes,
@@ -223,7 +223,7 @@ if( typeof module !== 'undefined' )
 if( _global_.WTOOLS_PRIVATE )
 delete require.cache[ module.id ];
 
-_[ Self.nameShort ] = _global_[ Self.name ] = Self;
+_[ Self.shortName ] = _global_[ Self.name ] = Self;
 if( typeof module !== 'undefined' )
 module[ 'exports' ] = Self;
 
