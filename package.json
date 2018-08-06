@@ -3,12 +3,12 @@
   "version": "0.4.40",
   "engine": "node >= 6.0.0",
   "license": "MIT",
-  "description": "The module in JavaScript for mapping names from one space into another and vice versa.",
+  "description": "Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.",
   "author": "Kostiantyn Wandalen <wanalen@willbe.so>",
   "contributors": [
     {
       "name": "Kostiantyn Wandalen",
-      "email": "wanalen@willbe.so>"
+      "email": "wanalen@willbe.so"
     }
   ],
   "main": "staging/dwtools/amid/mapper/NameMapper.s",
