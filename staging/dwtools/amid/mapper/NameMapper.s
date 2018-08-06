@@ -178,8 +178,8 @@ var Composes =
 {
   droppingDuplicate : 1,
   asIsIfMiss : 0,
-  keyToValueMap : Object.create( null ),
-  valueToKeyMap : Object.create( null ),
+  keyToValueMap : _.define.own( {} ),
+  valueToKeyMap : _.define.own( {} ),
 }
 
 var Associates =
@@ -207,7 +207,7 @@ var Proto =
 
   // relations
 
-  
+
   Composes : Composes,
   Associates : Associates,
   Restricts : Restricts,
@@ -216,7 +216,7 @@ var Proto =
 
 // define
 
-_.classMake
+_.classDeclare
 ({
   cls : Self,
   parent : Parent,
