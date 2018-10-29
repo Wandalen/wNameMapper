@@ -103,7 +103,7 @@ function forVal( val )
 {
   var self = this;
 
-  _.assert( arguments.length === 1, 'expects single argument' );
+  _.assert( arguments.length === 1, 'Expects single argument' );
 
   if( !_.primitiveIs( val ) )
   {
@@ -127,7 +127,7 @@ function forKey( key )
 {
   var self = this;
 
-  _.assert( arguments.length === 1, 'expects single argument' );
+  _.assert( arguments.length === 1, 'Expects single argument' );
 
   if( !_.primitiveIs( key ) )
   {
@@ -138,7 +138,7 @@ function forKey( key )
     });
   }
 
-  _.assert( _.strIs( key ) || _.numberIs( key ),'expects string or number {-key-}, but got',_.strTypeOf( key ) );
+  _.assert( _.strIs( key ) || _.numberIs( key ),'Expects string or number {-key-}, but got',_.strTypeOf( key ) );
 
   if( self.asIsIfMiss && self.keyToValueMap[ key ] === undefined )
   return key;
@@ -153,7 +153,7 @@ function forKey( key )
 function hasKey( key )
 {
   var self = this;
-  _.assert( _.strIs( key ) || _.numberIs( key ),'expects string or number {-key-}, but got',_.strTypeOf( key ) );
+  _.assert( _.strIs( key ) || _.numberIs( key ),'Expects string or number {-key-}, but got',_.strTypeOf( key ) );
   return self.keyToValueMap[ key ] !== undefined;
 }
 
