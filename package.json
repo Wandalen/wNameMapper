@@ -14,7 +14,7 @@
   "main": "proto/dwtools/amid/mapper/NameMapper.s",
   "files": [
     "proto/dwtools/amid/mapper/",
-    "production"
+    "proto/dwtools/Tools.s", "production"
   ],
   "directories": {
     "doc": "doc",
