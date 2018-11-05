@@ -11,18 +11,18 @@
       "email": "wanalen@willbe.so"
     }
   ],
-  "main": "staging/dwtools/amid/mapper/NameMapper.s",
+  "main": "proto/dwtools/amid/mapper/NameMapper.s",
   "files": [
-    "staging/dwtools/amid/mapper/",
+    "proto/dwtools/amid/mapper/",
     "production"
   ],
   "directories": {
     "doc": "doc",
-    "main": "staging/dwtools/amid/mapper/NameMapper.s"
+    "main": "proto/dwtools/amid/mapper/NameMapper.s"
   },
   "scripts": {
     "test": "wtest staging",
-    "make_doc": "./doc.sh"
+    "docgen": "wdocgen proto"
   },
   "repository": {
     "type": "git",
