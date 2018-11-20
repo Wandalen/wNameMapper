@@ -51,11 +51,8 @@ function init( o )
   self.hasKey = self._hasKey.bind( self );
   self.hasVal = self._hasVal.bind( self );
 
-  /* seal it */
-
   if( self.constructor === Self )
   Object.preventExtensions( self );
-
 }
 
 //
@@ -69,7 +66,7 @@ function set()
   self.keyToValueMap = _.mapExtend( null,self.keyToValueMap );
   _.mapsExtend( self.keyToValueMap,arguments );
 
-  if( self.droppingDuplicate )
+  if( self.droppingDuplicates )
   self.valueToKeyMap = _.mapInvertDroppingDuplicates( self.keyToValueMap );
   else
   self.valueToKeyMap = _.mapInvert( self.keyToValueMap );
@@ -100,7 +97,8 @@ function forVal( val )
   if( self.asIsIfMiss && self.valueToKeyMap[ val ] === undefined )
   return val;
 
-  _.assert( self.valueToKeyMap[ val ] !== undefined,'Unknown value',val );
+  _.assert( self.valueToKeyMap[ val ] !== undefined, () => 'Unknown ' + self.rightName + ' ' + val );
+
   return self.valueToKeyMap[ val ];
 }
 
@@ -126,7 +124,7 @@ function forKey( key )
   if( self.asIsIfMiss && self.keyToValueMap[ key ] === undefined )
   return key;
 
-  _.assert( self.keyToValueMap[ key ] !== undefined,'Unknown key',key );
+  _.assert( self.keyToValueMap[ key ] !== undefined, () => 'Unknown ' + self.leftName + ' ' + _.strQuote( key ) );
 
   return self.keyToValueMap[ key ];
 }
@@ -154,10 +152,12 @@ function hasVal( val )
 
 var Composes =
 {
-  droppingDuplicate : 1,
+  droppingDuplicates : 1,
   asIsIfMiss : 0,
   keyToValueMap : _.define.own( {} ),
   valueToKeyMap : _.define.own( {} ),
+  leftName : 'key',
+  rightName : 'value',
 }
 
 var Associates =
@@ -184,7 +184,6 @@ var Proto =
   _hasVal : hasVal,
 
   // relations
-
 
   Composes : Composes,
   Associates : Associates,
