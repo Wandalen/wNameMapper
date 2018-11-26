@@ -119,7 +119,7 @@ function forKey( key )
     });
   }
 
-  _.assert( _.strIs( key ) || _.numberIs( key ),'Expects string or number {-key-}, but got',_.strTypeOf( key ) );
+  _.assert( _.strIs( key ) || _.numberIs( key ),'Expects string or number {-key-}, but got',_.strType( key ) );
 
   if( self.asIsIfMiss && self.keyToValueMap[ key ] === undefined )
   return key;
@@ -134,7 +134,7 @@ function forKey( key )
 function hasKey( key )
 {
   var self = this;
-  _.assert( _.strIs( key ) || _.numberIs( key ),'Expects string or number {-key-}, but got',_.strTypeOf( key ) );
+  _.assert( _.strIs( key ) || _.numberIs( key ),'Expects string or number {-key-}, but got',_.strType( key ) );
   return self.keyToValueMap[ key ] !== undefined;
 }
 

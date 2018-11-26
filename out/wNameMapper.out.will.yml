@@ -160,7 +160,7 @@ reflector:
       ./dwtools/amid/mapper/NameMapper.s: true
     srcFilter:
       basePath: ./proto
-      prefixPath: proto
+      prefixPath: .
     dstFilter:
       basePath: .
       prefixPath: .
