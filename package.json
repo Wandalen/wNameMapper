@@ -11,15 +11,15 @@
       "email": "wanalen@willbe.so"
     }
   ],
-  "main": "proto/dwtools/amid/mapper/NameMapper.s",
+  "main": "proto/dwtools/amid/l5_mapper/NameMapper.s",
   "files": [
-    "proto/dwtools/amid/mapper/",
+    "proto/dwtools/amid/l5_mapper/",
     "proto/dwtools/Tools.s",
     "production"
   ],
   "directories": {
     "doc": "doc",
-    "main": "proto/dwtools/amid/mapper/NameMapper.s"
+    "main": "proto/dwtools/amid/l5_mapper/NameMapper.s"
   },
   "scripts": {
     "test": "wtest staging",
