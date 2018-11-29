@@ -54,8 +54,8 @@ path:
       - ./dwtools/Tools.s
       - ./dwtools/abase
       - ./dwtools/amid
-      - ./dwtools/amid/mapper
-      - ./dwtools/amid/mapper/NameMapper.s
+      - ./dwtools/amid/l5_mapper
+      - ./dwtools/amid/l5_mapper/NameMapper.s
       - ./dwtools/atop
     criterion:
       default: 1
@@ -67,7 +67,7 @@ path:
   exportedTerminals.0:
     path:
       - ./dwtools/Tools.s
-      - ./dwtools/amid/mapper/NameMapper.s
+      - ./dwtools/amid/l5_mapper/NameMapper.s
     criterion:
       default: 1
       debug: 1
@@ -157,7 +157,7 @@ reflector:
     recursive: 0
     filePath:
       ./dwtools/Tools.s: true
-      ./dwtools/amid/mapper/NameMapper.s: true
+      ./dwtools/amid/l5_mapper/NameMapper.s: true
     srcFilter:
       basePath: .
       prefixPath: proto
@@ -280,7 +280,7 @@ exported:
     exportedTerminalsPath:
       path:
         - ./dwtools/Tools.s
-        - ./dwtools/amid/mapper/NameMapper.s
+        - ./dwtools/amid/l5_mapper/NameMapper.s
       criterion:
         default: 1
         debug: 1
