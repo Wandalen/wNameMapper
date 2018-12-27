@@ -37,8 +37,7 @@
     "wCopyable": ""
   },
   "devDependencies": {
-    "wTesting": "",
-    "wnamemapper": "."
+    "wTesting": ""
   },
   "keywords": [
     "wTools",
