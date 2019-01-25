@@ -3,7 +3,8 @@
 'use strict';
 
 /**
-  @module Tools/mid/NameMapper - Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.
+ * Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.
+  @module Tools/mid/NameMapper
 */
 
 /**
