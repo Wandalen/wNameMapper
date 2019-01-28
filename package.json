@@ -1,6 +1,6 @@
 {
   "name": "wnamemapper",
-  "version": "0.4.66",
+  "version": "0.4.67",
   "engine": "node >= 6.0.0",
   "license": "MIT",
   "description": "Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.",
