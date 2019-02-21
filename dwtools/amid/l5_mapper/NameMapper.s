@@ -22,10 +22,10 @@ if( typeof module !== 'undefined' )
 
 //
 
-var _global = _global_;
-var _ = _global_.wTools;
-var Parent = null;
-var Self = function wNameMapper( o )
+let _global = _global_;
+let _ = _global_.wTools;
+let Parent = null;
+let Self = function wNameMapper( o )
 {
   return _.instanceConstructor( Self, this, arguments );
 }
@@ -38,7 +38,7 @@ Self.shortName = 'NameMapper';
 
 function init( o )
 {
-  var self = this;
+  let self = this;
 
   _.assert( arguments.length === 0 || arguments.length === 1 );
 
@@ -60,12 +60,12 @@ function init( o )
 
 function set()
 {
-  var self = this;
+  let self = this;
 
   _.assert( arguments.length > 0 );
 
-  self.keyToValueMap = _.mapExtend( null,self.keyToValueMap );
-  _.mapsExtend( self.keyToValueMap,arguments );
+  self.keyToValueMap = _.mapExtend( null, self.keyToValueMap );
+  _.mapsExtend( self.keyToValueMap, arguments );
 
   if( self.droppingDuplicates )
   self.valueToKeyMap = _.mapInvertDroppingDuplicates( self.keyToValueMap );
@@ -80,16 +80,16 @@ function set()
 
 //
 
-function forVal( val )
+function _forVal( val )
 {
-  var self = this;
+  let self = this;
 
   _.assert( arguments.length === 1, 'Expects single argument' );
 
   if( !_.primitiveIs( val ) )
   {
     debugger;
-    return _.entityMap( val,function forVal( val )
+    return _.entityMap( val, function forVal( val )
     {
       return self.forVal( val );
     });
@@ -105,22 +105,22 @@ function forVal( val )
 
 //
 
-function forKey( key )
+function _forKey( key )
 {
-  var self = this;
+  let self = this;
 
   _.assert( arguments.length === 1, 'Expects single argument' );
 
   if( !_.primitiveIs( key ) )
   {
     debugger;
-    return _.entityMap( key,function forKey( key )
+    return _.entityMap( key, function forKey( key )
     {
       return self.forKey( key );
     });
   }
 
-  _.assert( _.strIs( key ) || _.numberIs( key ),'Expects string or number {-key-}, but got',_.strType( key ) );
+  _.assert( _.strIs( key ) || _.numberIs( key ), 'Expects string or number {-key-}, but got', _.strType( key ) );
 
   if( self.asIsIfMiss && self.keyToValueMap[ key ] === undefined )
   return key;
@@ -132,26 +132,26 @@ function forKey( key )
 
 //
 
-function hasKey( key )
+function _hasVal( val )
 {
-  var self = this;
-  _.assert( _.strIs( key ) || _.numberIs( key ),'Expects string or number {-key-}, but got',_.strType( key ) );
-  return self.keyToValueMap[ key ] !== undefined;
+  let self = this;
+  return self.valueToKeyMap[ val ] !== undefined;
 }
 
 //
 
-function hasVal( val )
+function _hasKey( key )
 {
-  var self = this;
-  return self.valueToKeyMap[ val ] !== undefined;
+  let self = this;
+  _.assert( _.strIs( key ) || _.numberIs( key ), 'Expects string or number {-key-}, but got', _.strType( key ) );
+  return self.keyToValueMap[ key ] !== undefined;
 }
 
 // --
 // relations
 // --
 
-var Composes =
+let Composes =
 {
   droppingDuplicates : 1,
   asIsIfMiss : 0,
@@ -161,11 +161,11 @@ var Composes =
   rightName : 'value',
 }
 
-var Associates =
+let Associates =
 {
 }
 
-var Restricts =
+let Restricts =
 {
 }
 
@@ -173,22 +173,22 @@ var Restricts =
 // declare
 // --
 
-var Proto =
+let Proto =
 {
 
-  init : init,
-  set : set,
+  init,
+  set,
 
-  _forVal : forVal,
-  _forKey : forKey,
-  _hasKey : hasKey,
-  _hasVal : hasVal,
+  _forVal,
+  _forKey,
+  _hasVal,
+  _hasKey,
 
   // relations
 
-  Composes : Composes,
-  Associates : Associates,
-  Restricts : Restricts,
+  Composes,
+  Associates,
+  Restricts,
 
 };
 
