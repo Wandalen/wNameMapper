@@ -21,8 +21,8 @@ execution :
 
 path :
 
-  repository : git+https://github.com/Wandalen/wNameMapper.git
-  bugs : https://github.com/Wandalen/wNameMapper/issues
+  repository : git+https:///github.com/Wandalen/wNameMapper.git
+  bugs : https:///github.com/Wandalen/wNameMapper/issues
 
 step :
 
