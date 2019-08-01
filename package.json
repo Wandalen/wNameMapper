@@ -22,7 +22,7 @@
     "main": "proto/dwtools/amid/l5_mapper/NameMapper.s"
   },
   "scripts": {
-    "test": "wtest proto",
+    "test": "wtest .run proto/**",
     "docgen": "wdocgen proto"
   },
   "repository": {

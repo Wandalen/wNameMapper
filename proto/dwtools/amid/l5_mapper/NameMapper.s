@@ -36,7 +36,7 @@ let _ = _global_.wTools;
 let Parent = null;
 let Self = function wNameMapper( o )
 {
-  return _.instanceConstructor( Self, this, arguments );
+  return _.workpiece.construct( Self, this, arguments );
 }
 
 Self.shortName = 'NameMapper';
@@ -51,7 +51,7 @@ function init( o )
 
   _.assert( arguments.length === 0 || arguments.length === 1 );
 
-  _.instanceInit( self );
+  _.workpiece.initFields( self );
 
   if( o )
   self.copy( o );
@@ -70,9 +70,9 @@ function init( o )
 /**
  * @summary Maps names from one space to another and vice versa.
  * @description Expects at least one map with key:value pairs.
- * @example 
+ * @example
  * let shortNameToLong  = new _.NameMapper().set
-   ({ 
+   ({
       'Tools' : 'wTools',
       'NameMapper' : 'wNameMapper',
    });
@@ -106,9 +106,9 @@ function set()
 
 /**
  * @summary Returns key mapped with provided value `val`.
- * @example 
+ * @example
  * let keyToValueMap  = new _.NameMapper().set
-   ({ 
+   ({
       'A' : 'B',
    });
    keyToValueMap.forVal('B') // A
@@ -143,9 +143,9 @@ function _forVal( val )
 
 /**
  * @summary Returns value mapped with provided key `key`.
- * @example 
+ * @example
  * let keyToValueMap  = new _.NameMapper().set
-   ({ 
+   ({
       'A' : 'B',
    });
    keyToValueMap.forKey('A') // B
@@ -182,9 +182,9 @@ function _forKey( key )
 
 /**
  * @summary Returns true if map has key:value pair with provided value `val`.
- * @example 
+ * @example
  * let keyToValueMap  = new _.NameMapper().set
-   ({ 
+   ({
       'A' : 'B',
    });
    keyToValueMap.hasVal('A') // false
@@ -203,9 +203,9 @@ function _hasVal( val )
 
 /**
  * @summary Returns true if map has key:value pair with provided key `key`.
- * @example 
+ * @example
  * let keyToValueMap  = new _.NameMapper().set
-   ({ 
+   ({
       'A' : 'B',
    });
    keyToValueMap.hasKey('A') // true

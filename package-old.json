@@ -1,18 +1,28 @@
-
 {
   "name": "wnamemapper",
-  "version": "0.3.0",
-  "description": "___",
-  "author": "Kostiantyn Wandalen <wanalen@willbe.so>",
+  "version": "0.4.90",
+  "engine": "node >= 6.0.0",
   "license": "MIT",
-  "main": "proto/dwtools/amid/___",
+  "description": "Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.",
+  "author": "Kostiantyn Wandalen <wanalen@willbe.so>",
+  "contributors": [
+    {
+      "name": "Kostiantyn Wandalen",
+      "email": "wanalen@willbe.so"
+    }
+  ],
+  "main": "proto/dwtools/amid/l5_mapper/NameMapper.s",
   "files": [
-    "proto/dwtools/amid",
+    "proto/dwtools/amid/l5_mapper/",
     "proto/dwtools/Tools.s",
     "production"
   ],
+  "directories": {
+    "doc": "doc",
+    "main": "proto/dwtools/amid/l5_mapper/NameMapper.s"
+  },
   "scripts": {
-    "test": "wtest proto",
+    "test": "wtest .run proto/**",
     "docgen": "wdocgen proto"
   },
   "repository": {
@@ -23,12 +33,16 @@
     "url": "https://github.com/Wandalen/wNameMapper/issues"
   },
   "dependencies": {
-    "wTools": ""
+    "wTools": "",
+    "wCopyable": ""
   },
   "devDependencies": {
     "wTesting": ""
   },
   "keywords": [
-    "wTools"
+    "wTools",
+    "Map names",
+    "Key by value",
+    "Translate"
   ]
 }
