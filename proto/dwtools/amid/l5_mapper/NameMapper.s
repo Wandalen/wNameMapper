@@ -36,7 +36,7 @@ let _ = _global_.wTools;
 let Parent = null;
 let Self = function wNameMapper( o )
 {
-  return _.instanceConstructor( Self, this, arguments );
+  return _.workpiece.construct( Self, this, arguments );
 }
 
 Self.shortName = 'NameMapper';
@@ -51,7 +51,7 @@ function init( o )
 
   _.assert( arguments.length === 0 || arguments.length === 1 );
 
-  _.instanceInit( self );
+  _.workpiece.initFields( self );
 
   if( o )
   self.copy( o );
