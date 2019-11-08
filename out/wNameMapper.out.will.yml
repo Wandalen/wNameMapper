@@ -2,40 +2,44 @@ format: outwillfile-2.0
 root:
   - wNameMapper.out
 consistency:
-  ../.ex.will.yml: &ref_0
+  wNameMapper.out.will.yml: &ref_0
+    hash: 7764b26cec3d2ac1de614f6cd521eacd
+    size: 38620
+  ../.ex.will.yml: &ref_1
     hash: b8037876e3d3a71137a47c975f88dc4a
     size: 1990
-  ../.im.will.yml: &ref_1
-    hash: ddc4dfab99fede4510240a03221d3450
-    size: 4950
+  ../.im.will.yml: &ref_2
+    hash: d6c6e78f5a387b5c7c519f6ed67bf645
+    size: 5024
 module:
   wNameMapper.out:
     about:
       name: wNameMapper
+      org: noorg
       description: >-
         Simple class to map names from one space to another and vice versa.
         Options for handling names collisions exist. Use the module to make your
         program shorter, more readable and to avoid typos.
       enabled: 1
       version: 0.5.0
-      interpreters: &ref_2
+      interpreters:
         - njs >= 8.0.0
         - chrome >= 60.0.0
         - firefox >= 60.0.0
-      keywords: &ref_3
+      keywords:
         - wTools
         - Map names
         - Key by value
         - Translate
       license: MIT
       author: Kostiantyn Wandalen <wanalen@willbe.so>
-      contributors: &ref_4
+      contributors:
         - Kostiantyn Wandalen <wanalen@willbe.so>
       npm.name: wnamemapper
-      npm.scripts: &ref_5
+      npm.scripts:
         test: wtest .run proto/**
         docgen: wdocgen .build proto
-      npm.directories: &ref_6
+      npm.directories:
         doc: doc
         main: proto/dwtools/amid/l5_mapper/NameMapper.s
     path:
@@ -66,9 +70,6 @@ module:
       download:
         criterion:
           predefined: 1
-      remote:
-        criterion:
-          predefined: 1
       repository:
         path: 'git+https:///github.com/Wandalen/wNameMapper.git'
       origins:
@@ -78,15 +79,15 @@ module:
       bugtracker:
         path: 'https:///github.com/Wandalen/wNameMapper/issues'
       in:
-        criterion:
-          predefined: 0
         path: .
       out:
-        criterion:
-          predefined: 0
         path: .
       temp:
-        path: 'path::out'
+        path:
+          - 'path::out'
+          - ../package-lock.json
+          - ../package.json
+          - ../node_modules
       proto:
         path: ../proto
       export:
@@ -151,11 +152,13 @@ module:
         path: '{path::out.*=}/source/Index.s'
       exported.dir.proto.export:
         criterion:
+          generated: 1
           content: proto
           export: 1
         path: ../proto
       exported.files.proto.export:
         criterion:
+          generated: 1
           content: proto
           export: 1
         path:
@@ -336,6 +339,7 @@ module:
           prefixPath: ../proto
         mandatory: 1
         criterion:
+          generated: 1
           content: proto
           export: 1
       exported.files.proto.export:
@@ -348,6 +352,7 @@ module:
         recursive: 0
         mandatory: 1
         criterion:
+          generated: 1
           content: proto
           export: 1
     step:
@@ -701,6 +706,24 @@ module:
           content: prime
         inherit:
           - files.transpile
+      exported.proto.export:
+        opts:
+          reflector: 'reflector::exported.proto.export*'
+        criterion:
+          generated: 1
+          content: proto
+          export: 1
+        inherit:
+          - files.reflect
+      exported.files.proto.export:
+        opts:
+          reflector: 'reflector::exported.files.proto.export*'
+        criterion:
+          generated: 1
+          content: proto
+          export: 1
+        inherit:
+          - files.reflect
     build:
       proto.export:
         steps:
@@ -789,25 +812,39 @@ module:
           content: proto
           export: 1
     consistency:
-      ../.ex.will.yml: *ref_0
-      ../.im.will.yml: *ref_1
+      wNameMapper.out.will.yml: *ref_0
+      ../.ex.will.yml: *ref_1
+      ../.im.will.yml: *ref_2
   ../:
     about:
       name: wNameMapper
+      org: noorg
       description: >-
         Simple class to map names from one space to another and vice versa.
         Options for handling names collisions exist. Use the module to make your
         program shorter, more readable and to avoid typos.
       enabled: 1
       version: 0.5.0
-      interpreters: *ref_2
-      keywords: *ref_3
+      interpreters:
+        - njs >= 8.0.0
+        - chrome >= 60.0.0
+        - firefox >= 60.0.0
+      keywords:
+        - wTools
+        - Map names
+        - Key by value
+        - Translate
       license: MIT
       author: Kostiantyn Wandalen <wanalen@willbe.so>
-      contributors: *ref_4
+      contributors:
+        - Kostiantyn Wandalen <wanalen@willbe.so>
       npm.name: wnamemapper
-      npm.scripts: *ref_5
-      npm.directories: *ref_6
+      npm.scripts:
+        test: wtest .run proto/**
+        docgen: wdocgen .build proto
+      npm.directories:
+        doc: doc
+        main: proto/dwtools/amid/l5_mapper/NameMapper.s
     path:
       module.willfiles:
         criterion:
@@ -836,9 +873,6 @@ module:
       download:
         criterion:
           predefined: 1
-      remote:
-        criterion:
-          predefined: 1
       repository:
         path: 'git+https:///github.com/Wandalen/wNameMapper.git'
       origins:
@@ -848,21 +882,21 @@ module:
       bugtracker:
         path: 'https:///github.com/Wandalen/wNameMapper/issues'
       in:
-        criterion:
-          predefined: 0
         path: .
       out:
-        criterion:
-          predefined: 0
         path: out
       temp:
-        path: 'path::out'
+        path:
+          - 'path::out'
+          - package-lock.json
+          - package.json
+          - node_modules
       proto:
-        path: ./proto
+        path: proto
       export:
         path: '{path::proto}/**'
       doc:
-        path: ./doc
+        path: doc
       out.raw.debug:
         criterion:
           debug: debug
@@ -1484,5 +1518,8 @@ module:
         hash: b8037876e3d3a71137a47c975f88dc4a
         size: 1990
       ../.im.will.yml:
-        hash: ddc4dfab99fede4510240a03221d3450
-        size: 4950
+        hash: d6c6e78f5a387b5c7c519f6ed67bf645
+        size: 5024
+      wNameMapper.out.will.yml:
+        hash: 7764b26cec3d2ac1de614f6cd521eacd
+        size: 38620
