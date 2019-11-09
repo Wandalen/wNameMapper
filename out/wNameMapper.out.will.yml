@@ -1520,6 +1520,4 @@ module:
       ../.im.will.yml:
         hash: d6c6e78f5a387b5c7c519f6ed67bf645
         size: 5024
-      wNameMapper.out.will.yml:
-        hash: 7764b26cec3d2ac1de614f6cd521eacd
-        size: 38620
+      wNameMapper.out.will.yml: *ref_0

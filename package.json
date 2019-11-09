@@ -26,7 +26,7 @@
   {
     "url" : "https://github.com/Wandalen/wNameMapper/issues"
   }, 
-  "dependencies" : { "wTools" : "", "wCopyable" : "" }, 
-  "devDependencies" : { "wTesting" : "" }, 
+  "dependencies" : { "wTools" : "alpha", "wCopyable" : "alpha" }, 
+  "devDependencies" : { "wTesting" : "alpha" }, 
   "keywords" : [ "wTools", "Map names", "Key by value", "Translate" ]
 }
