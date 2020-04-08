@@ -28,7 +28,8 @@ if( typeof module !== 'undefined' )
  * @example
  * let mapper = new _.NameMapper({ leftName : 'kind of entity', rightName : 'name of routine' })
  * @class wNameMapper
- * @memberof module:Tools/mid/NameMapper
+ * @namespace wTools
+ * @module Tools/mid/NameMapper
 */
 
 let _global = _global_;
@@ -78,8 +79,10 @@ function init( o )
    });
    shortNameToLong.forKey('NameMapper') // wNameMapper
    shortNameToLong.forVal('wTools') // Tools
- * @class set
- * @memberof module:Tools/mid/NameMapper.wNameMapper#
+ * @method set
+ * @class wNameMapper
+ * @namespace wTools
+ * @module Tools/mid/NameMapper
 */
 
 function set()
@@ -112,8 +115,10 @@ function set()
       'A' : 'B',
    });
    keyToValueMap.forVal('B') // A
- * @class forVal
- * @memberof module:Tools/mid/NameMapper.wNameMapper#
+ * @method forVal
+ * @class wNameMapper
+ * @namespace wTools
+ * @module Tools/mid/NameMapper
 */
 
 function _forVal( val )
@@ -149,8 +154,10 @@ function _forVal( val )
       'A' : 'B',
    });
    keyToValueMap.forKey('A') // B
- * @class forKey
- * @memberof module:Tools/mid/NameMapper.wNameMapper#
+ * @method forKey
+ * @class wNameMapper
+ * @namespace wTools
+ * @module Tools/mid/NameMapper
 */
 
 function _forKey( key )
@@ -189,8 +196,10 @@ function _forKey( key )
    });
    keyToValueMap.hasVal('A') // false
    keyToValueMap.hasVal('B') // true
- * @class hasVal
- * @memberof module:Tools/mid/NameMapper.wNameMapper#
+ * @method hasVal
+ * @class wNameMapper
+ * @namespace wTools
+ * @module Tools/mid/NameMapper
 */
 
 function _hasVal( val )
@@ -210,8 +219,10 @@ function _hasVal( val )
    });
    keyToValueMap.hasKey('A') // true
    keyToValueMap.hasKey('B') // false
- * @class hasKey
- * @memberof module:Tools/mid/NameMapper.wNameMapper#
+ * @method hasKey
+ * @class wNameMapper
+ * @namespace wTools
+ * @module Tools/mid/NameMapper
 */
 
 function _hasKey( key )
@@ -229,7 +240,9 @@ function _hasKey( key )
  * @property {Object} valueToKeyMap Container for mapped value:key pairs.
  * @property {String} leftName='key' Description of left side of key:value pair.
  * @property {String} rightName='value' Description of right side of key:value pair.
- * @memberof module:Tools/mid/NameMapper.wNameMapper
+ * @class wNameMapper
+ * @namespace wTools
+ * @module Tools/mid/NameMapper
  */
 
 // --
