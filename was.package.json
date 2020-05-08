@@ -4,10 +4,10 @@
   "engine" : "node >= 8.0.0",
   "license" : "MIT",
   "description" : "Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.",
-  "author" : "Kostiantyn Wandalen <wanalen@willbe.so>",
+  "author" : "Kostiantyn Wandalen <wanalen@01.school>",
   "contributors" :
   [
-    { "name" : "Kostiantyn Wandalen", "email" : "wanalen@willbe.so" }
+    { "name" : "Kostiantyn Wandalen", "email" : "wanalen@01.school" }
   ],
   "main" : "proto/dwtools/amid/l5_mapper/NameMapper.s",
   "files" : [ "proto/dwtools/amid/l5_mapper/", "proto/dwtools/Tools.s", "out" ],
