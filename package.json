@@ -16,7 +16,7 @@
     "doc" : "doc",
     "main" : "proto/dwtools/amid/l5_mapper/NameMapper.s"
   },
-  "scripts" : { "test" : "wtest .run 'proto/**'", "docgen" : "wdocgen proto" },
+  "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
   "repository" :
   {
     "type" : "git",
