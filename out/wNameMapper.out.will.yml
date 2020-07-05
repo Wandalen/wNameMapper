@@ -163,6 +163,7 @@ module:
           export: 1
         path:
           - ../proto
+          - ../proto/Integration.test.s
           - ../proto/dwtools
           - ../proto/dwtools/Tools.s
           - ../proto/dwtools/abase
@@ -1503,6 +1504,4 @@ module:
       ../.im.will.yml:
         hash: d6c6e78f5a387b5c7c519f6ed67bf645
         size: 5024
-      wNameMapper.out.will.yml:
-        hash: 6d1846dd890c2550c6bbbc0fcc7c513f
-        size: 38273
+      wNameMapper.out.will.yml: *ref_0
