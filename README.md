@@ -1,5 +1,5 @@
 
-# wNameMapper [![Build Status](https://travis-ci.org/Wandalen/wNameMapper.svg?branch=master)](https://travis-ci.org/Wandalen/wNameMapper)
+# module::NameMapper [![Status](https://github.com/Wandalen/wNameMapper/workflows/Test/badge.svg)](https://github.com/Wandalen/wNameMapper}/actions?query=workflow%3ATest)
 
 Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.
 
