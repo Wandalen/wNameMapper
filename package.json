@@ -9,12 +9,12 @@
   [
     { "name" : "Kostiantyn Wandalen", "email" : "wanalen@01.school" }
   ],
-  "main" : "proto/dwtools/amid/l5_mapper/NameMapper.s",
-  "files" : [ "proto/dwtools/amid/l5_mapper/", "proto/dwtools/Tools.s", "out" ],
+  "main" : "proto/wtools/amid/l5_mapper/NameMapper.s",
+  "files" : [ "proto/wtools/amid/l5_mapper/", "proto/wtools/Tools.s", "out" ],
   "directories" :
   {
     "doc" : "doc",
-    "main" : "proto/dwtools/amid/l5_mapper/NameMapper.s"
+    "main" : "proto/wtools/amid/l5_mapper/NameMapper.s"
   },
   "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
   "repository" :

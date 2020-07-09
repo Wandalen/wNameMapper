@@ -1,5 +1,5 @@
 
-# module::NameMapper [![Status](https://github.com/Wandalen/wNameMapper/workflows/Test/badge.svg)](https://github.com/Wandalen/wNameMapper}/actions?query=workflow%3ATest)
+# module::NameMapper [![Status](https://github.com/Wandalen/wNameMapper/workflows/Test/badge.svg)](https://github.com/Wandalen/wNameMapper/actions?query=workflow%3ATest) [![experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/emersion/stability-badges#experimental)
 
 Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.
 
