@@ -11,7 +11,7 @@ Simple class to map names from one space to another and vice versa. Options for 
 if( typeof module !== 'undefined' )
 require( 'wNameMapper' );
 
-var _ = wTools;
+let _ = wTools;
 
 var nameMapper = new wNameMapper().set
 ({

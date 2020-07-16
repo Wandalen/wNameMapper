@@ -2,7 +2,7 @@
 if( typeof module !== 'undefined' )
 require( 'wnamemapper' );
 
-var _ = wTools;
+let _ = wTools;
 
 var nameMapper = new wNameMapper().set
 ({
