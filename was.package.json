@@ -1,1 +1,28 @@
-{"name":"wnamemapper","version":"0.4.187","engine":"node >= 10.0.0","license":"MIT","description":"Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.","author":"Kostiantyn Wandalen <wanalen@01.school>","contributors":[{"name":"Kostiantyn Wandalen","email":"wanalen@01.school"}],"main":"proto/wtools/amid/l5_mapper/NameMapper.s","files":["proto/wtools/amid/l5_mapper/","proto/wtools/Tools.s","out"],"directories":{"doc":"doc","main":"proto/wtools/amid/l5_mapper/NameMapper.s"},"scripts":{"test":"wtest .run 'proto/**' rapidity:-3","docgen":"wdocgen proto"},"repository":{"type":"git","url":"https://github.com/Wandalen/wNameMapper.git"},"bugs":{"url":"https://github.com/Wandalen/wNameMapper/issues"},"dependencies":{"wTools":"","wCopyable":""},"devDependencies":{"wTesting":""},"keywords":["wTools","Map names","Key by value","Translate"]}
+{
+  "name" : "wnamemapper",
+  "version" : "0.4.188",
+  "engine" : "node >= 10.0.0",
+  "license" : "MIT",
+  "description" : "Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.",
+  "author" : "Kostiantyn Wandalen <wanalen@01.school>",
+  "contributors" :
+  [
+    { "name" : "Kostiantyn Wandalen", "email" : "wanalen@01.school" }
+  ],
+  "main" : "proto/wtools/amid/l5_mapper/NameMapper.s",
+  "files" : [ "proto/wtools/amid/l5_mapper/", "proto/wtools/Tools.s", "out" ],
+  "directories" : { "doc" : "doc", "main" : "proto/wtools/amid/l5_mapper/NameMapper.s" },
+  "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "https://github.com/Wandalen/wNameMapper.git"
+  },
+  "bugs" :
+  {
+    "url" : "https://github.com/Wandalen/wNameMapper/issues"
+  },
+  "dependencies" : { "wTools" : "", "wCopyable" : "" },
+  "devDependencies" : { "wTesting" : "" },
+  "keywords" : [ "wTools", "Map names", "Key by value", "Translate" ]
+}
