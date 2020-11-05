@@ -48,24 +48,24 @@ Self.shortName = 'NameMapper';
 
 function init( o )
 {
-  let self = this;
+  let mapper = this;
 
   _.assert( arguments.length === 0 || arguments.length === 1 );
 
-  _.workpiece.initFields( self );
+  _.workpiece.initFields( mapper );
 
   if( o )
-  self.copy( o );
+  mapper.copy( o );
 
-  self.forVal = self._forVal.bind( self );
-  self.forKey = self._forKey.bind( self );
-  self.forVals = self._forVals.bind( self );
-  self.forKeys = self._forKeys.bind( self );
-  self.hasKey = self._hasKey.bind( self );
-  self.hasVal = self._hasVal.bind( self );
+  mapper.forVal = mapper._forVal.bind( mapper );
+  mapper.forKey = mapper._forKey.bind( mapper );
+  mapper.forVals = mapper._forVals.bind( mapper );
+  mapper.forKeys = mapper._forKeys.bind( mapper );
+  mapper.hasKey = mapper._hasKey.bind( mapper );
+  mapper.hasVal = mapper._hasVal.bind( mapper );
 
-  if( self.constructor === Self )
-  Object.preventExtensions( self );
+  if( mapper.constructor === Self )
+  Object.preventExtensions( mapper );
 }
 
 //
@@ -89,22 +89,22 @@ function init( o )
 
 function set()
 {
-  let self = this;
+  let mapper = this;
 
   _.assert( arguments.length > 0 );
 
-  self.val = _.mapExtend( null, self.val );
-  _.mapsExtend( self.val, arguments );
+  mapper.val = _.mapExtend( null, mapper.val );
+  _.mapsExtend( mapper.val, arguments );
 
-  if( self.droppingDuplicates )
-  self.key = _.mapInvertDroppingDuplicates( self.val );
+  if( mapper.droppingDuplicates )
+  mapper.key = _.mapInvertDroppingDuplicates( mapper.val );
   else
-  self.key = _.mapInvert( self.val );
+  mapper.key = _.mapInvert( mapper.val );
 
-  Object.freeze( self.val );
-  Object.freeze( self.key );
+  Object.freeze( mapper.val );
+  Object.freeze( mapper.key );
 
-  return self;
+  return mapper;
 }
 
 //
@@ -125,25 +125,17 @@ function set()
 
 function _forVal( val )
 {
-  let self = this;
+  let mapper = this;
+  let result = mapper.key[ val ];
 
   _.assert( arguments.length === 1, 'Expects single argument' );
 
-  // if( !_.primitiveIs( val ) )
-  // {
-  //   debugger;
-  //   return _.entityMap( val, function forVal( val )
-  //   {
-  //     return self.forVal( val );
-  //   });
-  // }
+  if( result === undefined )
+  result = mapper.onNothing( undefined, val, mapper );
 
-  if( self.asIsIfMiss && self.key[ val ] === undefined )
-  return val;
+  _.assert( result !== undefined, () => 'Unknown ' + mapper.rightName + ' ' + val );
 
-  _.assert( self.key[ val ] !== undefined, () => 'Unknown ' + self.rightName + ' ' + val );
-
-  return self.key[ val ];
+  return result;
 }
 
 //
@@ -164,27 +156,17 @@ function _forVal( val )
 
 function _forKey( key )
 {
-  let self = this;
+  let mapper = this;
+  let result = mapper.val[ key ];
 
   _.assert( arguments.length === 1, 'Expects single argument' );
 
-  // if( !_.primitiveIs( key ) )
-  // {
-  //   debugger;
-  //   return _.entityMap( key, function forKey( key )
-  //   {
-  //     return self.forKey( key );
-  //   });
-  // }
+  if( result === undefined )
+  result = mapper.onNothing( key, undefined, mapper );
 
-  _.assert( _.strIs( key ) || _.numberIs( key ), 'Expects string or number {-key-}, but got', _.strType( key ) );
+  _.assert( result !== undefined, () => 'Unknown ' + mapper.leftName + ' ' + key );
 
-  if( self.asIsIfMiss && self.val[ key ] === undefined )
-  return key;
-
-  _.assert( self.val[ key ] !== undefined, () => 'Unknown ' + self.leftName + ' ' + _.strQuote( key ) );
-
-  return self.val[ key ];
+  return result;
 }
 
 //
@@ -205,7 +187,7 @@ function _forKey( key )
 
 function _forVals( val )
 {
-  let self = this;
+  let mapper = this;
 
   _.assert( arguments.length === 1, 'Expects single argument' );
 
@@ -214,11 +196,11 @@ function _forVals( val )
     debugger;
     return _.map( val, function forVal( val )
     {
-      return self._forVal( val );
+      return mapper._forVal( val );
     });
   }
 
-  return self._forVal( val );
+  return mapper._forVal( val );
 }
 
 //
@@ -239,7 +221,7 @@ function _forVals( val )
 
 function _forKeys( key )
 {
-  let self = this;
+  let mapper = this;
 
   _.assert( arguments.length === 1, 'Expects single argument' );
 
@@ -248,11 +230,11 @@ function _forKeys( key )
     debugger;
     return _.map( key, function forKey( key )
     {
-      return self._forKey( key );
+      return mapper._forKey( key );
     });
   }
 
-  return self._forKey( key );
+  return mapper._forKey( key );
 }
 
 
@@ -275,8 +257,8 @@ function _forKeys( key )
 
 function _hasVal( val )
 {
-  let self = this;
-  return self.key[ val ] !== undefined;
+  let mapper = this;
+  return mapper.key[ val ] !== undefined;
 }
 
 //
@@ -298,10 +280,30 @@ function _hasVal( val )
 
 function _hasKey( key )
 {
-  let self = this;
+  let mapper = this;
   _.assert( _.strIs( key ) || _.numberIs( key ), 'Expects string or number {-key-}, but got', _.strType( key ) );
-  return self.val[ key ] !== undefined;
+  return mapper.val[ key ] !== undefined;
 }
+
+//
+
+function Nothing()
+{
+}
+
+//
+
+function AsIs( key, val, mapper )
+{
+  if( key !== undefined )
+  return key;
+  else
+  return val;
+}
+
+// --
+// relations
+// --
 
 /**
  * @typedef {Object} Fields
@@ -316,14 +318,11 @@ function _hasKey( key )
  * @module Tools/mid/NameMapper
  */
 
-// --
-// relations
-// --
-
 let Composes =
 {
   droppingDuplicates : 1,
-  asIsIfMiss : 0,
+  // asIsIfMiss : 0,
+  onNothing : Nothing,
   val : _.define.own( {} ),
   key : _.define.own( {} ),
   leftName : 'key',
@@ -336,6 +335,17 @@ let Associates =
 
 let Restricts =
 {
+}
+
+let Forbids =
+{
+  asIsIfMiss : 'asIsIfMiss'
+}
+
+let Statics =
+{
+  Nothing,
+  AsIs,
 }
 
 // --
@@ -355,11 +365,16 @@ let Proto =
   _hasVal,
   _hasKey,
 
+  Nothing,
+  AsIs,
+
   // relations
 
   Composes,
   Associates,
   Restricts,
+  Forbids,
+  Statics,
 
 };
 
