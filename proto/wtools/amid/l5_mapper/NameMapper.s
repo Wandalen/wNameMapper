@@ -59,6 +59,8 @@ function init( o )
 
   self.forVal = self._forVal.bind( self );
   self.forKey = self._forKey.bind( self );
+  self.forVals = self._forVals.bind( self );
+  self.forKeys = self._forKeys.bind( self );
   self.hasKey = self._hasKey.bind( self );
   self.hasVal = self._hasVal.bind( self );
 
@@ -91,16 +93,16 @@ function set()
 
   _.assert( arguments.length > 0 );
 
-  self.keyToValueMap = _.mapExtend( null, self.keyToValueMap );
-  _.mapsExtend( self.keyToValueMap, arguments );
+  self.val = _.mapExtend( null, self.val );
+  _.mapsExtend( self.val, arguments );
 
   if( self.droppingDuplicates )
-  self.valueToKeyMap = _.mapInvertDroppingDuplicates( self.keyToValueMap );
+  self.key = _.mapInvertDroppingDuplicates( self.val );
   else
-  self.valueToKeyMap = _.mapInvert( self.keyToValueMap );
+  self.key = _.mapInvert( self.val );
 
-  Object.freeze( self.keyToValueMap );
-  Object.freeze( self.valueToKeyMap );
+  Object.freeze( self.val );
+  Object.freeze( self.key );
 
   return self;
 }
@@ -110,11 +112,11 @@ function set()
 /**
  * @summary Returns key mapped with provided value `val`.
  * @example
- * let keyToValueMap  = new _.NameMapper().set
+ * let val  = new _.NameMapper().set
    ({
       'A' : 'B',
    });
-   keyToValueMap.forVal('B') // A
+   val.forVal('B') // A
  * @method forVal
  * @class wNameMapper
  * @namespace wTools
@@ -127,21 +129,21 @@ function _forVal( val )
 
   _.assert( arguments.length === 1, 'Expects single argument' );
 
-  if( !_.primitiveIs( val ) )
-  {
-    debugger;
-    return _.entityMap( val, function forVal( val )
-    {
-      return self.forVal( val );
-    });
-  }
+  // if( !_.primitiveIs( val ) )
+  // {
+  //   debugger;
+  //   return _.entityMap( val, function forVal( val )
+  //   {
+  //     return self.forVal( val );
+  //   });
+  // }
 
-  if( self.asIsIfMiss && self.valueToKeyMap[ val ] === undefined )
+  if( self.asIsIfMiss && self.key[ val ] === undefined )
   return val;
 
-  _.assert( self.valueToKeyMap[ val ] !== undefined, () => 'Unknown ' + self.rightName + ' ' + val );
+  _.assert( self.key[ val ] !== undefined, () => 'Unknown ' + self.rightName + ' ' + val );
 
-  return self.valueToKeyMap[ val ];
+  return self.key[ val ];
 }
 
 //
@@ -149,11 +151,11 @@ function _forVal( val )
 /**
  * @summary Returns value mapped with provided key `key`.
  * @example
- * let keyToValueMap  = new _.NameMapper().set
+ * let val  = new _.NameMapper().set
    ({
       'A' : 'B',
    });
-   keyToValueMap.forKey('A') // B
+   val.forKey('A') // B
  * @method forKey
  * @class wNameMapper
  * @namespace wTools
@@ -166,36 +168,105 @@ function _forKey( key )
 
   _.assert( arguments.length === 1, 'Expects single argument' );
 
-  if( !_.primitiveIs( key ) )
-  {
-    debugger;
-    return _.entityMap( key, function forKey( key )
-    {
-      return self.forKey( key );
-    });
-  }
+  // if( !_.primitiveIs( key ) )
+  // {
+  //   debugger;
+  //   return _.entityMap( key, function forKey( key )
+  //   {
+  //     return self.forKey( key );
+  //   });
+  // }
 
   _.assert( _.strIs( key ) || _.numberIs( key ), 'Expects string or number {-key-}, but got', _.strType( key ) );
 
-  if( self.asIsIfMiss && self.keyToValueMap[ key ] === undefined )
+  if( self.asIsIfMiss && self.val[ key ] === undefined )
   return key;
 
-  _.assert( self.keyToValueMap[ key ] !== undefined, () => 'Unknown ' + self.leftName + ' ' + _.strQuote( key ) );
+  _.assert( self.val[ key ] !== undefined, () => 'Unknown ' + self.leftName + ' ' + _.strQuote( key ) );
 
-  return self.keyToValueMap[ key ];
+  return self.val[ key ];
 }
+
+//
+
+/**
+ * @summary Returns key mapped with provided value `val`.
+ * @example
+ * let val  = new _.NameMapper().set
+   ({
+      'A' : 'B',
+   });
+   val.forVal('B') // A
+ * @method forVals
+ * @class wNameMapper
+ * @namespace wTools
+ * @module Tools/mid/NameMapper
+*/
+
+function _forVals( val )
+{
+  let self = this;
+
+  _.assert( arguments.length === 1, 'Expects single argument' );
+
+  if( !_.primitiveIs( val ) )
+  {
+    debugger;
+    return _.map( val, function forVal( val )
+    {
+      return self._forVal( val );
+    });
+  }
+
+  return self._forVal( val );
+}
+
+//
+
+/**
+ * @summary Returns value mapped with provided key `key`.
+ * @example
+ * let val  = new _.NameMapper().set
+   ({
+      'A' : 'B',
+   });
+   val.forKey('A') // B
+ * @method forKeys
+ * @class wNameMapper
+ * @namespace wTools
+ * @module Tools/mid/NameMapper
+*/
+
+function _forKeys( key )
+{
+  let self = this;
+
+  _.assert( arguments.length === 1, 'Expects single argument' );
+
+  if( !_.primitiveIs( key ) )
+  {
+    debugger;
+    return _.map( key, function forKey( key )
+    {
+      return self._forKey( key );
+    });
+  }
+
+  return self._forKey( key );
+}
+
 
 //
 
 /**
  * @summary Returns true if map has key:value pair with provided value `val`.
  * @example
- * let keyToValueMap  = new _.NameMapper().set
+ * let val  = new _.NameMapper().set
    ({
       'A' : 'B',
    });
-   keyToValueMap.hasVal('A') // false
-   keyToValueMap.hasVal('B') // true
+   val.hasVal('A') // false
+   val.hasVal('B') // true
  * @method hasVal
  * @class wNameMapper
  * @namespace wTools
@@ -205,7 +276,7 @@ function _forKey( key )
 function _hasVal( val )
 {
   let self = this;
-  return self.valueToKeyMap[ val ] !== undefined;
+  return self.key[ val ] !== undefined;
 }
 
 //
@@ -213,12 +284,12 @@ function _hasVal( val )
 /**
  * @summary Returns true if map has key:value pair with provided key `key`.
  * @example
- * let keyToValueMap  = new _.NameMapper().set
+ * let val  = new _.NameMapper().set
    ({
       'A' : 'B',
    });
-   keyToValueMap.hasKey('A') // true
-   keyToValueMap.hasKey('B') // false
+   val.hasKey('A') // true
+   val.hasKey('B') // false
  * @method hasKey
  * @class wNameMapper
  * @namespace wTools
@@ -229,15 +300,15 @@ function _hasKey( key )
 {
   let self = this;
   _.assert( _.strIs( key ) || _.numberIs( key ), 'Expects string or number {-key-}, but got', _.strType( key ) );
-  return self.keyToValueMap[ key ] !== undefined;
+  return self.val[ key ] !== undefined;
 }
 
 /**
  * @typedef {Object} Fields
  * @property {Boolean} droppingDuplicates=1 Prevents duplication of keys.
  * @property {Boolean} asIsIfMiss=0 Return source value if key:value pair is not found.
- * @property {Object} keyToValueMap Container for mapped key:value pairs.
- * @property {Object} valueToKeyMap Container for mapped value:key pairs.
+ * @property {Object} val Container for mapped key:value pairs.
+ * @property {Object} key Container for mapped value:key pairs.
  * @property {String} leftName='key' Description of left side of key:value pair.
  * @property {String} rightName='value' Description of right side of key:value pair.
  * @class wNameMapper
@@ -253,8 +324,8 @@ let Composes =
 {
   droppingDuplicates : 1,
   asIsIfMiss : 0,
-  keyToValueMap : _.define.own( {} ),
-  valueToKeyMap : _.define.own( {} ),
+  val : _.define.own( {} ),
+  key : _.define.own( {} ),
   leftName : 'key',
   rightName : 'value',
 }
@@ -279,6 +350,8 @@ let Proto =
 
   _forVal,
   _forKey,
+  _forVals,
+  _forKeys,
   _hasVal,
   _hasKey,
 
@@ -302,8 +375,6 @@ _.classDeclare
 _.Copyable.mixin( Self );
 
 //
-
-
 
 _[ Self.shortName ] = _global_[ Self.name ] = Self;
 if( typeof module !== 'undefined' )
