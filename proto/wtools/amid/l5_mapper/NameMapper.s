@@ -194,7 +194,7 @@ function _forVals( val )
   if( !_.primitiveIs( val ) )
   {
     debugger;
-    return _.map( val, function forVal( val )
+    return _.map_( null, val, function forVal( val )
     {
       return mapper._forVal( val );
     });
@@ -228,7 +228,7 @@ function _forKeys( key )
   if( !_.primitiveIs( key ) )
   {
     debugger;
-    return _.map( key, function forKey( key )
+    return _.map_( null, key, function forKey( key )
     {
       return mapper._forKey( key );
     });
