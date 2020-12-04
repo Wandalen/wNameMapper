@@ -1,4 +1,5 @@
-( function _NameMapper_s_( ) {
+( function _NameMapper_s_( )
+{
 
 'use strict';
 
