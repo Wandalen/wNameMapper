@@ -27,11 +27,11 @@ var nameMapper = new wNameMapper({ droppingDuplicate : 1 }).set
 // console.log( 'nameMapper.keyToValueMap',nameMapper.keyToValueMap );
 
 var valueForExam = nameMapper.valFor( 'exam' )
-console.log( 'valueForExam :',valueForExam );
+console.log( 'valueForExam :', valueForExam );
 // valueForExam : discussion
 
 var valueForPdf = nameMapper.valFor( 'pdf' )
-console.log( 'valueForPdf :',valueForPdf );
+console.log( 'valueForPdf :', valueForPdf );
 // valueForPdf : downloadable
 
 try
