@@ -26,17 +26,17 @@ var nameMapper = new wNameMapper({ droppingDuplicate : 1 }).set
 // console.log( 'nameMapper.valueToKeyMap',nameMapper.valueToKeyMap );
 // console.log( 'nameMapper.keyToValueMap',nameMapper.keyToValueMap );
 
-var valueForExam = nameMapper.valFor( 'exam' )
+var valueForExam = nameMapper.forKey( 'exam' )
 console.log( 'valueForExam :', valueForExam );
 // valueForExam : discussion
 
-var valueForPdf = nameMapper.valFor( 'pdf' )
+var valueForPdf = nameMapper.forKey( 'pdf' )
 console.log( 'valueForPdf :', valueForPdf );
 // valueForPdf : downloadable
 
 try
 {
-  var values = nameMapper.keyFor( 'downloadable' )
+  var values = nameMapper.forVal( 'downloadable' )
 }
 catch( err )
 {
