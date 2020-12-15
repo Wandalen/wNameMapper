@@ -4,7 +4,7 @@ require( 'wnamemapper' );
 
 let _ = wTools;
 
-var nameMapper = new wNameMapper({ droppingDuplicate : 1 }).set
+var nameMapper = new wNameMapper(/*{ droppingDuplicate : 1 }*/).set
 ({
 
   'exam' : 'discussion',
