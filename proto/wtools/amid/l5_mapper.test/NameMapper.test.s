@@ -174,11 +174,6 @@ function hasValKey( test )
 
 }
 
-function nameMapperOptionDroppingDuplicates( test )
-{
-  test.true( true )
-}
-
 //
 
 var Proto =
@@ -203,7 +198,6 @@ var Proto =
     forKeyKeys,
     forValVals,
     hasValKey,
-    nameMapperOptionDroppingDuplicates
   }
 
 }
