@@ -38,23 +38,22 @@ function suiteEnd()
   _.path.tempClose( context.suiteTempPath );
 }
 
+var nameMapper = new wNameMapper().set
+({
+  'string' : 'hello',
+  'number' : 1,
+  'boolean' : true,
+  'object' : { 'a' : 1 },
+  'array' : [ 1, 'a', true ],
+  'null' : null,
+});
+
 // --
 // Tests
 // --
 
 function forKeyKeys( test )
 {
-  var nameMapper = new wNameMapper().set
-  ({
-    'string' : 'hello',
-    'number' : 1,
-    'boolean' : true,
-    'object' : { 'a' : 1 },
-    'array' : [ 1, 'a', true ],
-    'null' : null,
-  });
-
-  /* - */
 
   test.case = 'forKey';
   test.identical( nameMapper.forKey( 'string' ), 'hello' );
@@ -105,15 +104,6 @@ function forKeyKeys( test )
 
 function forValVals( test )
 {
-  var nameMapper = new wNameMapper().set
-  ({
-    'string' : 'hello',
-    'number' : 1,
-    'boolean' : true,
-    'object' : { 'a' : 1 },
-    'array' : [ 1, 'a', true ],
-    'null' : null,
-  });
 
   test.case = 'forVal';
   test.identical( nameMapper.forVal( 'hello' ), 'string' );
@@ -159,6 +149,38 @@ function forValVals( test )
 
 //
 
+function hasValKey( test )
+{
+
+  test.case = 'hasKey';
+  test.identical( nameMapper.hasKey( 'string' ), true )
+  test.identical( nameMapper.hasKey( 'number' ), true )
+  test.identical( nameMapper.hasKey( 'boolean' ), true )
+  test.identical( nameMapper.hasKey( 'object' ), true )
+  test.identical( nameMapper.hasKey( 'array' ), true )
+  test.identical( nameMapper.hasKey( 'null' ), true )
+  test.identical( nameMapper.hasKey( 'non-existent' ), false )
+
+  /* */
+
+  test.case = 'hasVal';
+  test.identical( nameMapper.hasVal( 'hello' ), true )
+  test.identical( nameMapper.hasVal( 1 ), true )
+  test.identical( nameMapper.hasVal( true ), true )
+  test.identical( nameMapper.hasVal({ 'a' : 1 }), true )
+  test.identical( nameMapper.hasVal([ 1, 'a', true ]), true )
+  test.identical( nameMapper.hasVal( null ), true )
+  test.identical( nameMapper.hasVal( 'non-existent' ), false )
+
+}
+
+function nameMapperOptionDroppingDuplicates( test )
+{
+  test.true( true )
+}
+
+//
+
 var Proto =
 {
 
@@ -173,12 +195,15 @@ var Proto =
     suiteTempPath : null,
     assetsOriginalPath : null,
     appJsPath : null,
+    nameMapper,
   },
 
   tests :
   {
     forKeyKeys,
-    forValVals
+    forValVals,
+    hasValKey,
+    nameMapperOptionDroppingDuplicates
   }
 
 }
