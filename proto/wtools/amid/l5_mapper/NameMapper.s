@@ -91,6 +91,7 @@ function init( o )
 function set()
 {
   let mapper = this;
+
   _.assert( arguments.length > 0 );
 
   mapper.val = _.mapExtend( null, mapper.val );
@@ -222,6 +223,7 @@ function _forVals( val )
 function _forKeys( key )
 {
   let mapper = this;
+
   _.assert( arguments.length === 1, 'Expects single argument' );
 
   if( !_.primitiveIs( key ) )
