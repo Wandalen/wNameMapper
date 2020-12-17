@@ -23,6 +23,6 @@
     "url" : "https://github.com/Wandalen/wNameMapper/issues"
   },
   "dependencies" : { "wTools" : "", "wCopyable" : "" },
-  "devDependencies" : { "wTesting" : "" },
+  "devDependencies" : { "wTesting" : "", "wnamemapper" : "file:.", "eslint" : "7.1.0" },
   "keywords" : [ "wTools", "Map names", "Key by value", "Translate" ]
 }

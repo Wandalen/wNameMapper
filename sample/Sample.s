@@ -18,14 +18,14 @@ var nameMapper = new wNameMapper().set
 // console.log( 'nameMapper.valueToKeyMap',nameMapper.valueToKeyMap );
 // console.log( 'nameMapper.keyToValueMap',nameMapper.keyToValueMap );
 
-var valueForPoints = nameMapper.valFor( 'Points' )
-console.log( 'valueForPoints :',valueForPoints );
+var valueForPoints = nameMapper.forKey( 'Points' )
+console.log( 'valueForPoints :', valueForPoints );
 // valueForPoints : 5001
 
-var key = nameMapper.keyFor( valueForPoints )
-console.log( 'key :',key );
+var key = nameMapper.forVal( valueForPoints )
+console.log( 'key :', key );
 // key : Points
 
-var values = nameMapper.valFor([ 'Points','Lines' ])
-console.log( 'values :',values );
+var values = nameMapper.forKeys([ 'Points', 'Lines' ])
+console.log( 'values :', values );
 // values : 5001, 5004
