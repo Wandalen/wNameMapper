@@ -38,6 +38,8 @@ function suiteEnd()
   _.path.tempClose( context.suiteTempPath );
 }
 
+//
+
 var nameMapper = new wNameMapper().set
 ({
   'string' : 'hello',
