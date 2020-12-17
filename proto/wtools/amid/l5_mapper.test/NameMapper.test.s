@@ -95,7 +95,7 @@ function forKeyKeys( test )
   test.shouldThrowErrorSync( () => nameMapper.forKey() )
   test.shouldThrowErrorSync( () => nameMapper.forKeys() )
 
-  test.case = 'wrong value/s'
+  test.case = 'wrong key/s'
   test.shouldThrowErrorSync( () => nameMapper.forKey( 'non-existent' ) )
   test.shouldThrowErrorSync( () => nameMapper.forKeys([ 'non-existent1', 'non-existent2' ]) )
 
