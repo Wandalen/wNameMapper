@@ -91,12 +91,12 @@ function init( o )
 function set()
 {
   let mapper = this;
-
+  debugger
   _.assert( arguments.length > 0 );
 
   mapper.val = _.mapExtend( null, mapper.val );
   _.mapsExtend( mapper.val, arguments );
-
+  debugger
   if( mapper.droppingDuplicates )
   mapper.key = _.mapInvertDroppingDuplicates( mapper.val );
   else
@@ -223,7 +223,7 @@ function _forVals( val )
 function _forKeys( key )
 {
   let mapper = this;
-
+  debugger
   _.assert( arguments.length === 1, 'Expects single argument' );
 
   if( !_.primitiveIs( key ) )
