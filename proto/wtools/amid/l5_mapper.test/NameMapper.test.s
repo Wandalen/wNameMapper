@@ -54,10 +54,9 @@ var nameMapper = new wNameMapper().set
 // Tests
 // --
 
-function forKeyKeys( test )
+function forKey( test )
 {
-
-  test.case = 'forKey';
+  test.case = 'basic';
   test.identical( nameMapper.forKey( 'string' ), 'hello' );
   test.identical( nameMapper.forKey( 'number' ), 1 );
   test.identical( nameMapper.forKey( 'boolean' ), true );
@@ -67,7 +66,22 @@ function forKeyKeys( test )
 
   /* */
 
-  test.case = 'forKeys primitive';
+  if( !Config.debug )
+  return;
+
+  test.case = 'no arguments'
+  test.shouldThrowErrorSync( () => nameMapper.forKey() )
+
+  test.case = 'wrong key/s'
+  test.shouldThrowErrorSync( () => nameMapper.forKey( 'non-existent' ) )
+
+}
+
+//
+
+function forKeys( test )
+{
+  test.case = 'primitive';
   test.identical( nameMapper.forKeys( 'string' ), 'hello' );
   test.identical( nameMapper.forKeys( 'number' ), 1 );
   test.identical( nameMapper.forKeys( 'boolean' ), true );
@@ -77,13 +91,13 @@ function forKeyKeys( test )
 
   /* */
 
-  test.case = 'forKeys with map';
+  test.case = 'map';
   var exp = { a : 'hello', b : 1, c : true, d : { 'a' : 1 }, e : [ 1, 'a', true ], f : null }
   test.identical( nameMapper.forKeys({ a : 'string', b : 'number', c : 'boolean', d : 'object', e : 'array', f : 'null' }), exp );
 
   /* */
 
-  test.case = 'forKeys with array';
+  test.case = 'array';
   var exp = [ 'hello', 1, true, { 'a' : 1 }, [ 1, 'a', true ], null ]
   test.identical( nameMapper.forKeys([ 'string', 'number', 'boolean', 'object', 'array', 'null' ]), exp );
 
@@ -93,31 +107,42 @@ function forKeyKeys( test )
   return;
 
   test.case = 'no arguments'
-  test.shouldThrowErrorSync( () => nameMapper.forKey() )
   test.shouldThrowErrorSync( () => nameMapper.forKeys() )
 
   test.case = 'wrong key/s'
-  test.shouldThrowErrorSync( () => nameMapper.forKey( 'non-existent' ) )
   test.shouldThrowErrorSync( () => nameMapper.forKeys([ 'non-existent1', 'non-existent2' ]) )
 
 }
 
-/* */
+//
 
-function forValVals( test )
+function forVal( test )
 {
-
-  test.case = 'forVal';
+  test.case = 'basic';
   test.identical( nameMapper.forVal( 'hello' ), 'string' );
   test.identical( nameMapper.forVal( 1 ), 'number' );
   test.identical( nameMapper.forVal( true ), 'boolean' );
   test.identical( nameMapper.forVal({ 'a' : 1 }), 'object' );
-  test.identical( nameMapper.forVal( [ 1, 'a', true ] ), 'array' );
+  test.identical( nameMapper.forVal([ 1, 'a', true ]), 'array' );
   test.identical( nameMapper.forVal( null ), 'null' );
 
   /* */
 
-  test.case = 'forVals primitive';
+  if( !Config.debug )
+  return;
+
+  test.case = 'no arguments'
+  test.shouldThrowErrorSync( () => nameMapper.forVal() )
+
+  test.case = 'wrong value/s'
+  test.shouldThrowErrorSync( () => nameMapper.forVal( 'non-existent' ) )
+}
+
+//
+
+function forVals( test )
+{
+  test.case = 'primitive';
   test.identical( nameMapper.forVals( 'hello' ), 'string' );
   test.identical( nameMapper.forVals( 1 ), 'number' );
   test.identical( nameMapper.forVals( true ), 'boolean' );
@@ -141,20 +166,17 @@ function forValVals( test )
   return;
 
   test.case = 'no arguments'
-  test.shouldThrowErrorSync( () => nameMapper.forVal() )
   test.shouldThrowErrorSync( () => nameMapper.forVals() )
 
   test.case = 'wrong value/s'
-  test.shouldThrowErrorSync( () => nameMapper.forVal( 'non-existent' ) )
   test.shouldThrowErrorSync( () => nameMapper.forVals([ 'non-existent1', 'non-existent2' ]) )
 }
 
 //
 
-function hasValKey( test )
+function hasKey( test )
 {
-
-  test.case = 'hasKey';
+  test.case = 'basic';
   test.identical( nameMapper.hasKey( 'string' ), true )
   test.identical( nameMapper.hasKey( 'number' ), true )
   test.identical( nameMapper.hasKey( 'boolean' ), true )
@@ -162,10 +184,13 @@ function hasValKey( test )
   test.identical( nameMapper.hasKey( 'array' ), true )
   test.identical( nameMapper.hasKey( 'null' ), true )
   test.identical( nameMapper.hasKey( 'non-existent' ), false )
+}
 
-  /* */
+//
 
-  test.case = 'hasVal';
+function hasVal( test )
+{
+  test.case = 'basic';
   test.identical( nameMapper.hasVal( 'hello' ), true )
   test.identical( nameMapper.hasVal( 1 ), true )
   test.identical( nameMapper.hasVal( true ), true )
@@ -173,7 +198,6 @@ function hasValKey( test )
   test.identical( nameMapper.hasVal([ 1, 'a', true ]), true )
   test.identical( nameMapper.hasVal( null ), true )
   test.identical( nameMapper.hasVal( 'non-existent' ), false )
-
 }
 
 //
@@ -197,9 +221,12 @@ var Proto =
 
   tests :
   {
-    forKeyKeys,
-    forValVals,
-    hasValKey,
+    forKey,
+    forKeys,
+    forVal,
+    forVals,
+    hasKey,
+    hasVal,
   }
 
 }
