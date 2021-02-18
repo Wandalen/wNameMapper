@@ -296,10 +296,15 @@ function Nothing()
 
 function AsIs( key, val, mapper )
 {
-  if( key !== undefined )
-  return key;
-  else
+  if( key === undefined )
   return val;
+  else
+  return key;
+
+  // if( key !== undefined )
+  // return key;
+  // else
+  // return val;
 }
 
 // --
