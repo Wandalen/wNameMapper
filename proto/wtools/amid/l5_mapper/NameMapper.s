@@ -282,7 +282,7 @@ function _hasVal( val )
 function _hasKey( key )
 {
   let mapper = this;
-  _.assert( _.strIs( key ) || _.numberIs( key ), 'Expects string or number {-key-}, but got', _.strType( key ) );
+  _.assert( _.strIs( key ) || _.numberIs( key ), 'Expects string or number {-key-}, but got', _.entity.strType( key ) );
   return mapper.val[ key ] !== undefined;
 }
 
