@@ -32,10 +32,10 @@ if( typeof module !== 'undefined' )
  * @module Tools/mid/NameMapper
 */
 
-let _global = _global_;
-let _ = _global_.wTools;
-let Parent = null;
-let Self = wNameMapper;
+const _global = _global_;
+const _ = _global_.wTools;
+const Parent = null;
+const Self = wNameMapper;
 function wNameMapper( o )
 {
   return _.workpiece.construct( Self, this, arguments );
