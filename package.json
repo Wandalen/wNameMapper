@@ -1,6 +1,6 @@
 {
   "name": "wnamemapper",
-  "version": "0.4.237",
+  "version": "0.4.238",
   "engine": "node >= 10.0.0",
   "license": "MIT",
   "description": "Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.",
@@ -15,7 +15,8 @@
   "files": [
     "proto/wtools/amid/l5_mapper/",
     "proto/wtools/Tools.s",
-    "out"
+    "out",
+    "proto/node_modules"
   ],
   "directories": {
     "doc": "doc",
@@ -38,8 +39,7 @@
   },
   "devDependencies": {
     "eslint": "7.1.0",
-    "wTesting": "delta",
-    "wnamemapper": "file:."
+    "wTesting": "delta"
   },
   "keywords": [
     "wTools",
