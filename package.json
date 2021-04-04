@@ -1,50 +1,28 @@
 {
-  "name": "wnamemapper",
-  "version": "0.4.239",
-  "engine": "node >= 10.0.0",
-  "license": "MIT",
-  "description": "Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.",
-  "author": "Kostiantyn Wandalen <wanalen@01.school>",
-  "contributors": [
-    {
-      "name": "Kostiantyn Wandalen",
-      "email": "wanalen@01.school"
-    }
+  "name" : "wnamemapper",
+  "version" : "0.4.240",
+  "engine" : "node >= 10.0.0",
+  "license" : "MIT",
+  "description" : "Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.",
+  "author" : "Kostiantyn Wandalen <wanalen@01.school>",
+  "contributors" :
+  [
+    { "name" : "Kostiantyn Wandalen", "email" : "wanalen@01.school" }
   ],
-  "main": "proto/wtools/amid/l5_mapper/NameMapper.s",
-  "files": [
-    "proto/wtools/amid/l5_mapper/",
-    "proto/wtools/Tools.s",
-    "out",
-    "proto/node_modules"
-  ],
-  "directories": {
-    "doc": "doc",
-    "main": "proto/wtools/amid/l5_mapper/NameMapper.s"
+  "main" : "proto/node_modules/wnamemapper",
+  "files" : [ "proto/wtools/amid/l5_mapper/", "proto/wtools/Tools.s", "out", "proto/node_modules" ],
+  "directories" : { "doc" : "doc", "main" : "proto/wtools/amid/l5_mapper/NameMapper.s" },
+  "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "https://github.com/Wandalen/wNameMapper.git"
   },
-  "scripts": {
-    "test": "wtest .run 'proto/**' rapidity:-3",
-    "docgen": "wdocgen proto"
+  "bugs" :
+  {
+    "url" : "https://github.com/Wandalen/wNameMapper/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Wandalen/wNameMapper.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Wandalen/wNameMapper/issues"
-  },
-  "dependencies": {
-    "wTools": "delta",
-    "wCopyable": "delta"
-  },
-  "devDependencies": {
-    "eslint": "7.1.0",
-    "wTesting": "delta"
-  },
-  "keywords": [
-    "wTools",
-    "Map names",
-    "Key by value",
-    "Translate"
-  ]
+  "dependencies" : { "wTools" : "delta", "wCopyable" : "delta" },
+  "devDependencies" : { "eslint" : "7.1.0", "wTesting" : "delta" },
+  "keywords" : [ "wTools", "Map names", "Key by value", "Translate" ]
 }
