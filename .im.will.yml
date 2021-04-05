@@ -80,8 +80,8 @@ path:
       raw: compiled
       content: prime
   npm.proto.entry:
-    - /pro/module/wNameMapper/proto/wtools/amid/l5_mapper/NameMapper.s
-    - /pro/module/wNameMapper/proto/node_modules/wnamemapper
+    - proto/wtools/amid/l5_mapper/NameMapper.s
+    - proto/node_modules/wnamemapper
 reflector:
   reflect.proto:
     inherit: predefined.*
