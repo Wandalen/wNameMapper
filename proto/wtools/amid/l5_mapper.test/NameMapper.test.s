@@ -6,7 +6,7 @@
 if( typeof module !== 'undefined' )
 {
 
-  let _ = require( './../../../node_modules/Tools' );
+  const _ = require( './../../../node_modules/Tools' );
   _.include( 'wTesting' );
   _.include( 'wFiles' );
   _.include( 'wConsequence' );
@@ -17,7 +17,6 @@ if( typeof module !== 'undefined' )
 
 const _global = _global_;
 const _ = _global_.wTools;
-const Proto = {};
 
 // --
 // context
@@ -230,8 +229,6 @@ const Proto =
   }
 
 }
-
-_.mapExtend( Self, Proto );
 
 //
 
