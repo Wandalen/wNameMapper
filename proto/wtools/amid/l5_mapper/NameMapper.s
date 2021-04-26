@@ -94,7 +94,7 @@ function set()
 
   _.assert( arguments.length > 0 );
 
-  mapper.val = _.mapExtend( null, mapper.val );
+  mapper.val = _.props.extend( null, mapper.val );
   _.mapsExtend( mapper.val, arguments );
 
   if( mapper.droppingDuplicates )
