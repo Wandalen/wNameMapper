@@ -2,13 +2,10 @@ format: outwillfile-2.0
 root:
   - wNameMapper.out
 consistency:
-  wNameMapper.out.will.yml: &ref_0
-    hash: e8156999326f408f356f9e7ccbe592f7
-    size: 39221
-  ../.ex.will.yml: &ref_1
+  ../.ex.will.yml: &ref_0
     hash: e3fbf819d83eeada325dbbc070c14158
     size: 1990
-  ../.im.will.yml: &ref_2
+  ../.im.will.yml: &ref_1
     hash: 7f09e6785a5ccf5bd71959721ff9969d
     size: 5055
 module:
@@ -22,24 +19,24 @@ module:
         program shorter, more readable and to avoid typos.
       enabled: 1
       version: 0.5.0
-      interpreters:
+      interpreters: &ref_2
         - njs >= 10.0.0
         - chrome >= 60.0.0
         - firefox >= 60.0.0
-      keywords:
+      keywords: &ref_3
         - wTools
         - Map names
         - Key by value
         - Translate
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors:
+      contributors: &ref_4
         - Kostiantyn Wandalen <wanalen@01.school>
       npm.name: wnamemapper
-      npm.scripts:
+      npm.scripts: &ref_5
         test: wtest .run proto/**
         docgen: wdocgen .build proto
-      npm.directories:
+      npm.directories: &ref_6
         doc: doc
         main: proto/wtools/amid/l5_mapper/NameMapper.s
     path:
@@ -714,24 +711,6 @@ module:
           content: prime
         inherit:
           - files.transpile
-      exported.proto.export:
-        opts:
-          filePath: 'reflector::exported.proto.export'
-        criterion:
-          generated: 1
-          content: proto
-          export: 1
-        inherit:
-          - files.reflect
-      exported.files.proto.export:
-        opts:
-          filePath: 'reflector::exported.files.proto.export'
-        criterion:
-          generated: 1
-          content: proto
-          export: 1
-        inherit:
-          - files.reflect
     build:
       proto.export:
         steps:
@@ -820,9 +799,8 @@ module:
           content: proto
           export: 1
     consistency:
-      wNameMapper.out.will.yml: *ref_0
-      ../.ex.will.yml: *ref_1
-      ../.im.will.yml: *ref_2
+      ../.ex.will.yml: *ref_0
+      ../.im.will.yml: *ref_1
   ../:
     about:
       name: wNameMapper
@@ -833,26 +811,14 @@ module:
         program shorter, more readable and to avoid typos.
       enabled: 1
       version: 0.5.0
-      interpreters:
-        - njs >= 10.0.0
-        - chrome >= 60.0.0
-        - firefox >= 60.0.0
-      keywords:
-        - wTools
-        - Map names
-        - Key by value
-        - Translate
+      interpreters: *ref_2
+      keywords: *ref_3
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors:
-        - Kostiantyn Wandalen <wanalen@01.school>
+      contributors: *ref_4
       npm.name: wnamemapper
-      npm.scripts:
-        test: wtest .run proto/**
-        docgen: wdocgen .build proto
-      npm.directories:
-        doc: doc
-        main: proto/wtools/amid/l5_mapper/NameMapper.s
+      npm.scripts: *ref_5
+      npm.directories: *ref_6
     path:
       module.willfiles:
         criterion:
@@ -1530,4 +1496,3 @@ module:
       ../.im.will.yml:
         hash: 7f09e6785a5ccf5bd71959721ff9969d
         size: 5055
-      wNameMapper.out.will.yml: *ref_0
