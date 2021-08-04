@@ -1,6 +1,6 @@
 {
   "name": "wnamemapper",
-  "version": "0.4.264",
+  "version": "0.4.265",
   "engine": "node >= 10.0.0",
   "license": "MIT",
   "description": "Simple class to map names from one space to another and vice versa. Options for handling names collisions exist. Use the module to make your program shorter, more readable and to avoid typos.",
@@ -35,11 +35,11 @@
     "url": "https://github.com/Wandalen/wNameMapper/issues"
   },
   "dependencies": {
-    "wTools": "latest",
-    "wCopyable": "latest"
+    "wTools": "alpha",
+    "wCopyable": "alpha"
   },
   "devDependencies": {
-    "wTesting": "latest",
+    "wTesting": "alpha",
     "eslint": "7.1.0"
   },
   "keywords": [
