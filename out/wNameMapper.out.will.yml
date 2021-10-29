@@ -3,8 +3,8 @@ root:
   - wNameMapper.out
 consistency:
   ../will.yml: &ref_0
-    hash: 5335401221e8e1bc6cec537d0230d132
-    size: 6812
+    hash: 59e87f892f7d530722322dcf069307a5
+    size: 6671
 module:
   wNameMapper.out:
     about:
@@ -378,9 +378,6 @@ module:
           content: npm
         inherit:
           - module.export
-      npm.publish:
-        opts:
-          shell: npm publish
       npm.generate.debug.raw:
         opts:
           entryPath: 'path::entry.out.*=1'
@@ -716,12 +713,6 @@ module:
           - 'step::doc.export'
         criterion:
           content: doc
-          export: 1
-      npm.export:
-        steps:
-          - 'step::npm.publish'
-        criterion:
-          content: npm
           export: 1
       export:
         steps:
@@ -1077,9 +1068,6 @@ module:
           content: npm
         inherit:
           - module.export
-      npm.publish:
-        opts:
-          shell: npm publish
       npm.generate.debug.raw:
         opts:
           entryPath: 'path::entry.out.*=1'
@@ -1416,12 +1404,6 @@ module:
         criterion:
           content: doc
           export: 1
-      npm.export:
-        steps:
-          - 'step::npm.publish'
-        criterion:
-          content: npm
-          export: 1
       export:
         steps:
           - 'build::proto.export'
@@ -1479,5 +1461,5 @@ module:
           - 'build::npm'
     consistency:
       ../will.yml:
-        hash: 5335401221e8e1bc6cec537d0230d132
-        size: 6812
+        hash: 59e87f892f7d530722322dcf069307a5
+        size: 6671
