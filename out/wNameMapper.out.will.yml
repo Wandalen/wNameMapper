@@ -3,8 +3,8 @@ root:
   - wNameMapper.out
 consistency:
   ../will.yml: &ref_0
-    hash: 59e87f892f7d530722322dcf069307a5
-    size: 6671
+    hash: 567b2078c87086ee103ccdca48e309b3
+    size: 6679
 module:
   wNameMapper.out:
     about:
@@ -1461,5 +1461,5 @@ module:
           - 'build::npm'
     consistency:
       ../will.yml:
-        hash: 59e87f892f7d530722322dcf069307a5
-        size: 6671
+        hash: 567b2078c87086ee103ccdca48e309b3
+        size: 6679
