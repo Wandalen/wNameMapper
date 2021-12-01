@@ -21,14 +21,14 @@ module:
       npm.directories: &ref_1
         doc: doc
         main: proto/wtools/amid/l5_mapper/NameMapper.s
-      author: Kostiantyn Wandalen <wanalen@01.school>
+      author: Kostiantyn Wandalen <wandalen@obox.systems>
       keywords: &ref_2
         - wTools
         - Map names
         - Key by value
         - Translate
       contributors: &ref_3
-        - Kostiantyn Wandalen <wanalen@01.school>
+        - Kostiantyn Wandalen <wandalen@obox.systems>
       interpreters: &ref_4
         - njs >= 10.0.0
         - chrome >= 60.0.0
@@ -797,7 +797,7 @@ module:
       license: MIT
       npm.name: wnamemapper
       npm.directories: *ref_1
-      author: Kostiantyn Wandalen <wanalen@01.school>
+      author: Kostiantyn Wandalen <wandalen@obox.systems>
       keywords: *ref_2
       contributors: *ref_3
       interpreters: *ref_4
